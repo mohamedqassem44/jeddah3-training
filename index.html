@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>تدريب جدة 3</title>
+<meta name="description" content="تطبيق تدريب الصيادلة الجدد — جدة 3">
+<meta name="theme-color" content="#2C2A6E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="تدريب جدة 3">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: app shell — slim top bar, one column (max 980px), fixed bottom tab bar on phones / inline tabs on desktop.
+   Palette: Al-Dawaa ribbon gold on deep indigo-navy; neutrals tinted toward the navy. */
+:root{
+  --bg:#F5F5FA; --surface:#FFFFFF; --sunk:#ECECF4; --ink:#1E1D45; --muted:#5D5C7E; --faint:#8C8BA8; --line:#E2E1EE;
+  --navy:#2C2A6E; --navy-2:#3A3890; --on-navy:#FFFFFF; --on-navy-2:#CFCDEB;
+  --accent:#2C2A6E; --accent-ink:#FFFFFF; --accent-soft:#E9E8F6; --icon-fg:#2C2A6E;
+  --gold:#F2B90F; --gold-deep:#D99A00; --gold-soft:#FFF4CF; --gold-ink:#2C2A6E;
+  --ok:#1C7A4A; --ok-soft:#DCF1E4; --warn:#8F5A00; --warn-soft:#FFF0CC; --bad:#B23A3A; --bad-soft:#F8E1E1; --wa:#178A4C;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,system-ui,sans-serif;
+  --r:14px; --r-sm:10px; --shadow:0 1px 2px rgb(30 29 69/.05),0 6px 18px rgb(30 29 69/.06);
+  --nav-h:64px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#100F24; --surface:#1A1937; --sunk:#232145; --ink:#ECEBFA; --muted:#A4A2C8; --faint:#7E7CA4; --line:#2E2C55;
+  --navy:#24225A; --navy-2:#2F2D6E; --on-navy:#FFFFFF; --on-navy-2:#BEBCE6;
+  --accent:#F5C12E; --accent-ink:#1E1D45; --accent-soft:#2A2850; --icon-fg:#F5C12E;
+  --gold:#F5C12E; --gold-deep:#E0A60A; --gold-soft:#3A3014; --gold-ink:#1E1D45;
+  --ok:#5CCB8E; --ok-soft:#173326; --warn:#F2C25A; --warn-soft:#3A2E12; --bad:#EC8484; --bad-soft:#3A1C1C; --wa:#2FB36A;
+  --shadow:0 1px 2px rgb(0 0 0/.3); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#100F24; --surface:#1A1937; --sunk:#232145; --ink:#ECEBFA; --muted:#A4A2C8; --faint:#7E7CA4; --line:#2E2C55;
+  --navy:#24225A; --navy-2:#2F2D6E; --on-navy:#FFFFFF; --on-navy-2:#BEBCE6;
+  --accent:#F5C12E; --accent-ink:#1E1D45; --accent-soft:#2A2850; --icon-fg:#F5C12E;
+  --gold:#F5C12E; --gold-deep:#E0A60A; --gold-soft:#3A3014; --gold-ink:#1E1D45;
+  --ok:#5CCB8E; --ok-soft:#173326; --warn:#F2C25A; --warn-soft:#3A2E12; --bad:#EC8484; --bad-soft:#3A1C1C; --wa:#2FB36A;
+  --shadow:0 1px 2px rgb(0 0 0/.3); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy)}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+svg.i{width:20px;height:20px;flex:none;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+h2{font:600 1.25rem/1.35 var(--f-display);margin:0;text-wrap:balance}
+h3{font:600 1rem/1.4 var(--f-display);margin:0}
+p{margin:0}
+.lede{color:var(--muted);font-size:.92rem;max-width:62ch}
+.eyebrow{font-size:.72rem;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.note{font-size:.82rem;color:var(--muted)}
+.ltr{direction:ltr;unicode-bidi:isolate}
+.num{font-variant-numeric:tabular-nums}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+
+/* app bar */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy);color:var(--on-navy)}
+.bar{display:flex;align-items:center;gap:12px;padding-block:10px}
+.mark{width:40px;height:40px;border-radius:12px;background:#fff;color:#2C2A6E;display:grid;place-items:center;font:700 21px/1 Georgia,serif;flex:none;box-shadow:0 0 0 2px var(--gold)}
+.brand{min-width:0}
+.brand h1{font:600 1.02rem/1.25 var(--f-display);margin:0}
+.brand p{color:var(--on-navy-2);font-size:.74rem}
+.who{margin-inline-start:auto;font-size:.72rem;color:var(--on-navy);background:rgb(255 255 255/.12);padding:4px 10px;border-radius:99px;white-space:nowrap}
+.ribbon{height:3px;background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+nav.tabs{display:flex;gap:4px;padding-block:0 10px}
+nav.tabs button{display:flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--on-navy-2);font:500 .88rem var(--f-body);padding:8px 14px;border-radius:10px;cursor:pointer;white-space:nowrap}
+nav.tabs button svg{width:18px;height:18px}
+nav.tabs button[aria-selected="true"]{background:rgb(255 255 255/.14);color:#fff}
+nav.tabs button:hover{color:#fff}
+@media (max-width:759px){
+  nav.tabs{position:fixed;inset:auto 0 0 0;z-index:25;background:var(--surface);border-top:1px solid var(--line);padding:6px max(8px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));justify-content:space-around;gap:0;box-shadow:0 -4px 16px rgb(30 29 69/.06)}
+  nav.tabs button{flex:1;flex-direction:column;gap:2px;padding:6px 2px;font-size:.68rem;color:var(--muted);border-radius:10px;min-width:0}
+  nav.tabs button svg{width:22px;height:22px}
+  nav.tabs button[aria-selected="true"]{background:transparent;color:var(--ink)}
+  nav.tabs button[aria-selected="true"] svg{color:var(--gold-deep)}
+  main{padding-bottom:calc(var(--nav-h) + 28px)!important}
+  .foot{padding-bottom:calc(var(--nav-h) + 20px)!important}
+}
+main{padding-block:20px 56px;display:grid;gap:22px}
+.sect{display:grid;gap:12px}
+.sect-h{display:flex;align-items:end;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* buttons, chips, banners */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:var(--r-sm);padding:10px 16px;font:600 .88rem var(--f-body);cursor:pointer;text-decoration:none;background:var(--accent);color:var(--accent-ink);white-space:nowrap}
+.btn svg{width:18px;height:18px}
+.btn.gold{background:var(--gold);color:#2C2A6E}
+.btn.ghost{background:var(--sunk);color:var(--ink)}
+.btn.wa{background:var(--wa);color:#fff}
+.btn.danger{background:var(--bad-soft);color:var(--bad)}
+.btn.sm{padding:6px 11px;font-size:.8rem}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.chip.ok{background:var(--ok-soft);color:var(--ok)} .chip.wait{background:var(--warn-soft);color:var(--warn)} .chip.muted{background:var(--sunk);color:var(--muted)}
+.banner{background:var(--warn-soft);color:var(--warn);border-radius:var(--r-sm);padding:10px 14px;font-size:.86rem}
+.banner.ok{background:var(--ok-soft);color:var(--ok)}
+#install div{display:grid;gap:2px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.empty{border:1.5px dashed var(--line);border-radius:var(--r);padding:22px 18px;color:var(--muted);text-align:center;font-size:.9rem}
+.empty strong{color:var(--ink);display:block;margin-bottom:4px;font-family:var(--f-display)}
+
+/* hero */
+.hero{background:var(--navy);color:var(--on-navy);border-radius:20px;padding:24px 22px;display:grid;gap:12px;position:relative;overflow:hidden;isolation:isolate}
+.hero::before,.hero::after{content:"";position:absolute;z-index:-1;left:-22px;width:56px;height:240px;border-radius:30px;transform:rotate(-32deg)}
+.hero::before{top:-70px;background:linear-gradient(180deg,var(--gold),var(--gold-deep))}
+.hero::after{top:-24px;left:44px;width:40px;height:180px;background:linear-gradient(180deg,var(--gold-deep),var(--gold));opacity:.5}
+.hero > *{max-width:calc(100% - 70px)}
+.hero h2{font-size:1.5rem;color:inherit}
+.hero p{color:var(--on-navy-2);max-width:52ch}
+.hero .eyebrow{color:var(--gold)}
+@media (max-width:759px){.preview-switch{bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 14px)}}
+@media (max-width:520px){.tile.primary{grid-column:1/-1}.hero{padding:20px 18px}.hero h2{font-size:1.28rem}.hero::before{left:-38px;opacity:.85}.hero::after{left:18px;opacity:.35}.hero > *{max-width:100%}}
+.facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:2px}
+.facts div{display:grid}
+.facts b{font:600 1.35rem/1.2 var(--f-display);color:var(--gold)}
+.facts span{font-size:.74rem;color:var(--on-navy-2)}
+
+/* manager shortcuts */
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.tile{display:grid;gap:8px;align-content:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;text-decoration:none;color:var(--ink);cursor:pointer;font:inherit;text-align:start}
+.tile:hover{border-color:var(--gold)}
+.tile .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--accent-soft);color:var(--icon-fg)}
+.tile.primary{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.tile.primary .ic{background:var(--gold);color:#2C2A6E}
+.tile.primary span{color:var(--on-navy-2)}
+.tile b{font:600 .95rem var(--f-display)}
+.tile span{font-size:.78rem;color:var(--muted);line-height:1.45}
+.tile.off{opacity:.55;cursor:default}
+.status{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.st{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.st .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--gold-soft);color:var(--warn);flex:none}
+.st div{min-width:0;display:grid;gap:2px}
+.st b{font:600 .92rem var(--f-display)}
+
+/* journey */
+.journey{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.journey li{display:grid;grid-template-columns:40px 1fr;gap:12px;position:relative;padding-bottom:16px}
+.journey li:not(:last-child)::after{content:"";position:absolute;inset-inline-start:19px;top:40px;bottom:0;width:2px;background:var(--line)}
+.journey .dot{counter-increment:s;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--surface);border:2px solid var(--gold);color:var(--ink);font:700 .95rem var(--f-display)}
+.journey .dot::before{content:counter(s)}
+.journey .txt{display:grid;gap:2px;padding-top:6px;min-width:0}
+.journey .txt b{font:600 .98rem var(--f-display)}
+.journey .when{font-size:.74rem;font-weight:600;color:var(--warn);background:var(--warn-soft);padding:1px 8px;border-radius:99px;justify-self:start;margin-top:3px}
+
+/* 24-day plan strip */
+.plan{display:grid;gap:10px}
+.strip{display:flex;height:16px;border-radius:99px;overflow:hidden;background:var(--sunk);gap:2px}
+.strip i{display:block;height:100%}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px 14px}
+.legend div{display:flex;align-items:center;gap:8px;font-size:.84rem;min-width:0}
+.legend i{width:10px;height:10px;border-radius:3px;flex:none}
+.legend span{flex:1;min-width:0}
+.legend b{font-weight:600;color:var(--muted);font-size:.78rem;white-space:nowrap}
+
+/* materials */
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.cat{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;cursor:pointer;text-align:start;font:inherit;color:inherit}
+.cat .ic{grid-row:span 2;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--icon-fg)}
+.cat b{font:600 .95rem/1.3 var(--f-display)}
+.cat span{font-size:.76rem;color:var(--muted)}
+.cat[aria-pressed="true"]{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.cat[aria-pressed="true"] .ic{background:var(--gold);color:#2C2A6E}
+.search{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:0 12px;color:var(--muted)}
+.search input{flex:1;min-width:0;font:inherit;font-size:.95rem;color:var(--ink);background:transparent;border:0;padding:11px 0;outline:none}
+.files{display:grid;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.file{display:flex;gap:12px;align-items:center;padding:11px 14px;border-top:1px solid var(--line)}
+.file:first-child{border-top:0}
+.ft{width:40px;height:44px;border-radius:8px;flex:none;display:grid;place-items:end center;padding-bottom:6px;font:700 .58rem var(--f-body);letter-spacing:.04em;color:#fff;background:#B23A3A;position:relative}
+.ft::before{content:"";position:absolute;top:0;inset-inline-end:0;border-width:0 0 12px 12px;border-style:solid;border-color:transparent transparent rgb(255 255 255/.35) transparent}
+.ft.pptx{background:#C4572B}.ft.docx{background:#2B5DB2}
+.file a.t{flex:1;min-width:0;display:grid;text-decoration:none;color:var(--ink);font-size:.9rem;line-height:1.45}
+.file a.t bdi{overflow-wrap:anywhere}
+.file a.t:hover bdi{text-decoration:underline;text-decoration-color:var(--gold)}
+.file .dl{width:38px;height:38px;border-radius:10px;display:grid;place-items:center;background:var(--sunk);color:var(--ink);flex:none}
+.file .dl:hover{background:var(--gold-soft)}
+.grp-h{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;background:var(--sunk);font:600 .85rem var(--f-display)}
+.grp-h a{font:600 .78rem var(--f-body);color:var(--accent);text-decoration:none}
+.featured{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.feat{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px;text-decoration:none;color:var(--ink);min-width:0}
+.feat:hover{border-color:var(--gold)}
+.feat div{min-width:0;display:grid}
+.feat b{font:600 .88rem/1.35 var(--f-display);overflow-wrap:anywhere}
+.feat span{font-size:.74rem;color:var(--muted)}
+.badge-new{font-size:.66rem;font-weight:700;color:#2C2A6E;background:var(--gold);padding:1px 7px;border-radius:99px;margin-inline-start:6px;vertical-align:middle}
+
+/* trainees */
+form.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;align-items:end}
+.full{grid-column:1/-1}
+label.f{display:grid;gap:4px;font-size:.82rem;color:var(--muted);font-weight:500}
+label.f em{font-style:normal;color:var(--bad)}
+input[type=text],input[type=tel]{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:var(--r-sm);padding:10px 12px;width:100%}
+.list{display:grid;gap:8px}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.av{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--accent-soft);color:var(--icon-fg);font:600 .95rem var(--f-display);flex:none}
+.row .who2{flex:1;min-width:150px;display:grid}
+.row .who2 b{font:600 .95rem var(--f-display)}
+.groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.grp{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:8px;align-content:start}
+.grp ul{margin:0;padding-inline-start:18px;font-size:.84rem;color:var(--muted);display:grid;gap:2px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 16px;padding-block:18px 28px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem}
+.foot b{color:var(--ink)}
+.preview-switch{position:fixed;z-index:40;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);inset-inline-end:max(12px,env(safe-area-inset-left,0px));display:flex;gap:2px;background:var(--ink);color:var(--bg);border-radius:99px;padding:3px;font-size:.72rem;box-shadow:var(--shadow)}
+.preview-switch button{border:0;background:transparent;color:inherit;font:600 .72rem var(--f-body);padding:5px 10px;border-radius:99px;cursor:pointer}
+.preview-switch button[aria-pressed="true"]{background:var(--gold);color:#2C2A6E}
+@media (prefers-reduced-motion:no-preference){.btn,.tile,.cat,.feat,nav.tabs button{transition:background .15s,border-color .15s,color .15s}}
+
+/* ===== v2: الدخول والصلاحيات ===== */
+.top .acts{margin-inline-start:auto;display:flex;align-items:center;gap:8px}
+.top .who{margin:0}
+.iconbtn{width:36px;height:36px;border-radius:10px;border:0;background:rgb(255 255 255/.12);color:#fff;display:grid;place-items:center;cursor:pointer}
+.iconbtn svg{width:19px;height:19px}
+.login{min-height:100vh;min-height:100dvh;display:grid;align-content:start;background:var(--navy);color:var(--on-navy);position:relative;overflow:hidden;isolation:isolate}
+.login::before,.login::after{content:"";position:absolute;z-index:-1;left:-40px;width:70px;height:240px;border-radius:40px;transform:rotate(-32deg)}
+.login::before{top:-110px;background:linear-gradient(180deg,var(--gold),var(--gold-deep))}
+.login::after{top:-80px;left:44px;width:50px;height:190px;background:linear-gradient(180deg,var(--gold-deep),var(--gold));opacity:.45}
+.login .wrap{width:100%;max-width:440px;padding-block:max(120px,16vh) 40px;display:grid;gap:22px}
+.login .mark{width:64px;height:64px;font-size:32px;border-radius:18px}
+.login h1{font:600 1.5rem/1.3 var(--f-display);margin:0}
+.login .sub{color:var(--on-navy-2);font-size:.9rem}
+.lcard{background:var(--surface);color:var(--ink);border-radius:20px;padding:22px 20px;display:grid;gap:14px;box-shadow:0 10px 30px rgb(0 0 0/.18)}
+.lcard h2{font-size:1.15rem}
+.field{display:grid;gap:6px}
+.field label{font-size:.82rem;color:var(--muted);font-weight:500}
+.field input{font:600 1.15rem var(--f-display);letter-spacing:.06em;color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;width:100%;text-align:center;direction:ltr}
+.field input:focus{outline:none;border-color:var(--gold)}
+.field input.pin{letter-spacing:.7em;font-size:1.5rem;padding-inline-start:calc(14px + .7em)}
+.lcard .btn{width:100%;padding:13px 16px;font-size:.95rem}
+.linkbtn{background:none;border:0;color:var(--accent);font:600 .85rem var(--f-body);cursor:pointer;padding:4px;justify-self:center}
+.check{display:flex;align-items:center;gap:8px;font-size:.86rem;color:var(--muted)}
+.check input{width:18px;height:18px;accent-color:var(--navy)}
+.err{background:var(--bad-soft);color:var(--bad);border-radius:10px;padding:9px 12px;font-size:.86rem}
+.okmsg{background:var(--ok-soft);color:var(--ok);border-radius:10px;padding:9px 12px;font-size:.86rem}
+.spinner{width:20px;height:20px;border-radius:50%;border:3px solid rgb(255 255 255/.35);border-top-color:#fff;animation:sp 1s linear infinite}
+.btn.ghost .spinner,.lcard .btn.ghost .spinner{border-color:var(--line);border-top-color:var(--ink)}
+@keyframes sp{to{transform:rotate(360deg)}}
+.loading{display:grid;place-items:center;gap:10px;padding:60px 0;color:var(--muted)}
+.loading .spinner{border-color:var(--line);border-top-color:var(--gold-deep);width:30px;height:30px}
+/* progress ring + cards */
+.me{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center}
+.me>div{min-width:0}
+.ring .pad{fill:var(--navy)}
+.ring{width:118px;height:118px;flex:none}
+.ring circle{fill:none;stroke-width:10}
+.ring .bgc{stroke:rgb(255 255 255/.14)}
+.ring .fg{stroke:var(--gold);stroke-linecap:round;transform:rotate(-90deg);transform-origin:50% 50%}
+.ring text{fill:#fff;font:700 24px var(--f-display);text-anchor:middle}
+.ring .s{font:500 11px var(--f-body);fill:var(--on-navy-2)}
+.me h2{font-size:1.3rem;color:inherit}
+.me .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.chip.navy{background:rgb(255 255 255/.14);color:#fff}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.todo{display:grid;gap:10px}
+.task{display:flex;gap:12px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px}
+.task .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--gold-soft);color:var(--warn);flex:none}
+.task.done .ic{background:var(--ok-soft);color:var(--ok)}
+.task.hot{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
+.task div{min-width:0;display:grid;gap:3px;flex:1}
+.task b{font:600 .95rem var(--f-display)}
+.task .actions{margin-top:6px}
+.secs{display:grid;gap:12px}
+.sec{display:grid;gap:5px}
+.sec .row1{display:flex;justify-content:space-between;gap:8px;font-size:.88rem}
+.sec .row1 b{font-weight:600}
+.pbar{height:8px;border-radius:99px;background:var(--sunk);overflow:hidden}
+.pbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+.pbar i.full{background:var(--ok)}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media (max-width:620px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;display:grid;gap:2px}
+.kpi b{font:700 1.6rem/1.15 var(--f-display);color:var(--ink)}
+.kpi span{font-size:.76rem;color:var(--muted)}
+.kpi.warn b{color:var(--bad)}
+.people{display:grid;gap:8px}
+.person{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;cursor:pointer;text-align:start;font:inherit;color:inherit;width:100%}
+.person:hover{border-color:var(--gold)}
+.person .who2{min-width:0;display:grid;gap:4px}
+.person .who2 b{font:600 .95rem var(--f-display)}
+.track{position:relative;height:8px;border-radius:99px;background:var(--sunk)}
+.track i{position:absolute;inset-block:0;inset-inline-start:0;border-radius:99px;background:linear-gradient(90deg,var(--gold-deep),var(--gold))}
+.track .expm{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);opacity:.55;border-radius:2px}
+.av{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--icon-fg);font:700 1.05rem var(--f-display)}
+.feat .ft{font-size:.58rem;color:#fff}
+button.t.linkish{background:none;border:0;padding:0;cursor:pointer;flex:1;min-width:0;display:grid;text-align:start;color:var(--ink);font:inherit;font-size:.9rem;line-height:1.45}
+button.t.linkish bdi{overflow-wrap:anywhere}
+button.t.linkish:hover bdi:first-child{text-decoration:underline;text-decoration-color:var(--gold)}
+button.dl{border:0;cursor:pointer}
+.ulist{display:grid;gap:10px}
+.ucard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:grid;gap:10px}
+.ucard.off{opacity:.7}
+.uhead{display:flex;gap:12px;align-items:center}.uhead .who2{display:grid;gap:2px;min-width:0}.uhead b{font:600 .95rem var(--f-display)}
+.ucard .actions,.aform .actions,.result .actions,.danger-zone .actions{display:flex;flex-wrap:wrap;gap:8px}
+.aform{display:grid;gap:12px;border-color:var(--gold)}
+.aform .field input{font:500 1rem var(--f-body);letter-spacing:0;text-align:start}
+.aform .field input[dir=ltr]{text-align:left}
+.aform .field input:disabled{opacity:.6}
+.result{border-color:var(--ok);background:var(--ok-soft);display:grid;gap:8px}
+.result b{color:var(--ok);font:600 .95rem var(--f-display)}
+.btn.armed{background:var(--bad);color:#fff}
+.danger-zone{display:grid;gap:8px}
+button.tile{font:inherit;color:inherit;text-align:start;cursor:pointer;border:1px solid var(--line)}
+.person .pc{font:700 1rem var(--f-display);text-align:center;min-width:46px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.fchips{display:flex;gap:6px;flex-wrap:wrap}
+.fchip{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:6px 12px;font:500 .82rem var(--f-body);color:var(--muted);cursor:pointer}
+.fchip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.qlist{display:grid;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.qrow{display:flex;gap:12px;align-items:center;padding:12px 14px;border-top:1px solid var(--line);cursor:pointer;background:none;border-inline:0;border-bottom:0;font:inherit;color:inherit;text-align:start;width:100%}
+.qrow:first-child{border-top:0}
+.qrow .sc{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font:700 1.05rem var(--f-display);background:var(--sunk);flex:none}
+.qrow .sc.good{background:var(--ok-soft);color:var(--ok)} .qrow .sc.mid{background:var(--warn-soft);color:var(--warn)} .qrow .sc.low{background:var(--bad-soft);color:var(--bad)}
+.qrow div{flex:1;min-width:0;display:grid}
+.spark{width:100%;height:120px}
+.spark .ln{fill:none;stroke:var(--gold-deep);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+.spark .ar{fill:var(--gold);opacity:.14}
+.spark .gd{stroke:var(--line);stroke-width:1}
+.spark text{font:500 10px var(--f-body);fill:var(--muted)}
+.spark .dot{fill:var(--surface);stroke:var(--gold-deep);stroke-width:2}
+.qq{display:grid;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;border-inline-start:5px solid var(--line)}
+.qq.ok{border-inline-start-color:var(--ok)} .qq.no{border-inline-start-color:var(--bad)}
+.qq .qt{direction:ltr;text-align:left;font-weight:600;font-size:.92rem;line-height:1.5}
+.opts{display:grid;gap:6px;direction:ltr}
+.opt{border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:.86rem;text-align:left;display:flex;gap:8px;align-items:flex-start}
+.opt.right{border-color:var(--ok);background:var(--ok-soft);color:var(--ok);font-weight:600}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.exp{direction:ltr;text-align:left;font-size:.82rem;color:var(--muted)}
+.back{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:var(--accent);font:600 .88rem var(--f-body);cursor:pointer;padding:0}
+.back svg{transform:scaleX(-1)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 16px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:.86rem;z-index:50;opacity:0;transition:opacity .25s;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.show{opacity:1}
+.offline{background:var(--warn-soft);color:var(--warn);font-size:.8rem;text-align:center;padding:6px 12px}
+</style>
+</head>
+<body>
+<div dir="rtl" lang="ar" id="root"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+document.documentElement.lang="ar";document.documentElement.dir="rtl";
+/* ===== الإعداد ===== */
+const API_URL="__API_URL__";   // رابط Web app بتاع مشروع «Jeddah3 App API»
+const VERSION="2.1";
+const CONFIG={
+  managerName:"Dr. Qassem",
+  sheetUrl:"https://docs.google.com/spreadsheets/d/1oj5nNc5cHt8Y47FrZ6u0qmxvis0ULIYDcy-SzzSMYZA/edit",
+  dashUrl:"https://script.google.com/macros/s/AKfycbxVXNsT07UakLHeSROSr1aHHMqiYYkwZtnXPb8qWYd3GplGP3ZLGsJ4t3s943ge4zUW/exec",
+  platformUrl:"https://claude.ai/artifact/EfA7V5JECJneoVurKJfZrt",
+  materialsFolder:"https://drive.google.com/drive/folders/1_OBHIIxgGo0x4d3o33e706XEX4Wr_5d7",
+  materials:[],
+  materialsCats:[
+    {name:"الأدوية و CGP",note:"CGP، الخرائط الذهنية، الأجهزة والمكملات",folder:"1-4c_D3sH5eiO630NIxfffZ0hmkK-Qnnj",icon:"pill"},
+    {name:"مستحضرات التجميل",note:"البراندات والـ Flash cards والعناية بالبشرة والشعر",folder:"16Na31TuJNI7_RXb5pk2k57pT26RrK5Wx",icon:"drop"},
+    {name:"الأمور الإدارية",note:"البورتال، التأمين، التحصيل، الطلبات الخاصة",folder:"1SIzhrWlDj1Jeh89s3R85a3tuzEHn48S3",icon:"clip"},
+    {name:"منتجات الدواء الخاصة (Own Brand)",note:"PVL، Ronzac، SMC، House Brand",folder:"17onPUzrDcENT0GBjiQ2X0KR3F0eI1o-z",icon:"tag"}
+  ],
+  featured:["1WksmSe1HVm6u9etLOuLkULVuGuQ6gATR","1DOMotS9pbo0wxUWpauS3DIX0C-WLCNYv","1SXzdxcPDm6xSkdTPcZgXCp7696m19E3H","1uRZFMTC9n9h-A5YdUPqdOyr_re16hNUi","19Lh3G9CPz_lJEb6idjGYzuzMq-wY5jvj","1v8toS-sNK48HAz7aglR6NZ4ppvZejhkA"],
+  newIds:["1WksmSe1HVm6u9etLOuLkULVuGuQ6gATR"],
+  plan:[["الأدوية",12,"#2C2A6E"],["المستحضرات",4,"#D99A00"],["الحليب",1,"#6E6BC2"],["الأجهزة الطبية",1,"#3A9C8E"],["مهارات التواصل",1,"#C4572B"],
+        ["مهارات البيع + الرعاية الصيدلية",1,"#B07D00"],["إدارة المخزون + التقييم",1,"#5D5C7E"],["BM والبيع (POS)",1,"#2B5DB2"],["التأمين",1,"#1C7A4A"],["اللوائح",1,"#8C4A8C"]],
+  checklist:[]
+};
+(()=>{const MAT=[[0,"ON-SITE Training — دليل التدريب العملي","1WksmSe1HVm6u9etLOuLkULVuGuQ6gATR",82,"PDF"],[0,"Accu-Chek SmartGuide - Infographic","1PyZtJFZnUWQfaoSOeLr6ruS5BUhHkVYM",4.6,"PDF"],[0,"CGP - Allergic Rhinitis","13jPWzXDyYlGg1599b3KyzB0zIRVzbkY5",1.9,"PDF"],[0,"CGP - Baby Milk","1IsbkneJLzgjDVMwZZXg8duuGFWeSdY0v",16.6,"PDF"],[0,"CGP - Drug-Food Interaction","1DOMotS9pbo0wxUWpauS3DIX0C-WLCNYv",3.9,"PDF"],[0,"CGP - GIT Disorders 2024","1SXzdxcPDm6xSkdTPcZgXCp7696m19E3H",4.3,"PDF"],[0,"CGP - Hair Experts","1rJRqefPtEFpZeLz8tI65MJIapjcqTVJf",5.6,"PDF"],[0,"CGP - Hyperpigmentation","17v9G0WAgMN5VzJynda6wFLIAmIA0vMVA",2.1,"PDF"],[0,"CGP - Immunity Battle","1nh_FAjKnVBWnhEZD460obdFIgQkjb_2b",7.0,"PDF"],[0,"CGP - Oral Care 2025","1v0eP9Yq9Vsq4tQ39L2-V5yy8Mi5fougg",4.7,"PDF"],[0,"CGP - Pain Management 2023","19Lh3G9CPz_lJEb6idjGYzuzMq-wY5jvj",13.6,"PDF"],[0,"CGP - Respiratory","1uRZFMTC9n9h-A5YdUPqdOyr_re16hNUi",4.7,"PDF"],[0,"CGP - Weight Management 2023","1mbX-whcu7ESdmuNuAI6VVQoODfm0OXxI",5.6,"PDF"],[0,"Health & Wellness - Cross & Up Selling","1v8toS-sNK48HAz7aglR6NZ4ppvZejhkA",7.6,"PDF"],[0,"Martians - Iron Drops","1U1SVrooCyGSw_AQPgQmCloSZHK4FANUW",2.7,"PDF"],[0,"Martians - Start Strong Range","1CekDQVbO2adbFpBLynMYUOF3u4VF1VcF",23.7,"PDF"],[0,"Martians - Thrive Forward Range","18S5xE7uB2PEOxNtXVzZyOHtOg-RUN4un",24.6,"PDF"],[0,"Mind Map - Allergic Rhinitis","1SR8uaPTV_h0yuFlwwK4wlfWCDbY63MKG",2.9,"PDF"],[0,"Mind Map - Baby Milk","1wLAjgeVHg72VlKhW51qM-eqck4Oyvsyw",1.3,"PDF"],[0,"Mind Map - Hair Experts","1NmuhHZdSzWBc2Z0HZcbaTWSESH7yaqHk",4.6,"PDF"],[0,"Mind Map - Hypertension Drugs","1XYUj5stYMj7srtg4-Q5sZcKeh8CIrmoN",19.2,"PDF"],[0,"Mind Map - Immunity Battle","1N7soNqSgUj6B3LoePW7zESmr2lXyBR_I",2.7,"PDF"],[0,"Mind Map - Oral Antidiabetic Drugs","1hxOuBR1WdHSuL6GJIXpDMbePWfwrsTn5",14.5,"PDF"],[0,"Mind Map - Pain Management","1MlQBIo8H9WnMvkIhSzitvQJGHnkQu3vl",12.2,"PDF"],[0,"Mind Map - Respiratory (Common Cold)","1qgU2GTdZwbGXZCTt4HfM9qF3ML_iDBJE",0.5,"PDF"],[0,"Mind Map - Weight Management","1x80Wyhd5lUdpAYQ13k1h2UM4weIIG6ef",2.0,"PDF"],[0,"Premi - Blood Pressure Monitors","1ggYr42nC2uYr9NWNuLa2NckWJy8-rMc0",32.1,"PDF"],[0,"Spektrum - Women","1UEnyJ9nLh_3B19CimVEkn6wKWG7tHdBi",3.2,"PDF"],[0,"The First 1000 Days Nutrition","1A7WhcIfEjlHBBH43GG1PigkqKttw75t9",11.1,"PDF"],[0,"Winter Care Plus - Baby Care","1BgaBLYwTOmGvOXkmNB5ZH6q98unnDA6i",9.7,"PDF"],[0,"Winter Care Plus - Dandruff","14RGReLciKao5eG2VigPMMlPPmKKW0_if",9.3,"PDF"],[0,"Winter Care Plus - Immunity","1LSeIXP7CAY1qXrVMT2vUfJ9mOc_XwxT9",11.3,"PDF"],[0,"Winter Care Plus - Intro","1KvTxWeBAsihj-vO1fHYQjytyrCUPfbGj",9.3,"PDF"],[0,"Winter Care Plus - Medical Devices","1DwLiPo_iFzd0vRp8hDaQXUD9UWvzxfeD",15.6,"PDF"],[0,"Winter Care Plus - Moisturizers","1G5FnRyj-xjzXixq5BahEpgqoWpuw_XF4",20.5,"PDF"],[0,"Winter Care Plus - Pain","1lZMGcz8wXc7Or-QSSanQck89uvbCiO40",12.1,"PDF"],[0,"X-Lice - Training","1pwRXxdAARLixhKis9d-vH3nGnTPwh1PU",0.6,"PDF"],[1,"Acne Care Routine - Pharmacist Message","10ydSP8mtfWna8A9geSzXngYExixwzhN1",0.6,"PDF"],[1,"Arola - Flash Card","1uM9PcJmi5Rwu4vePqsgU9t9En2vd0Zz-",1.5,"PDF"],[1,"Avene - Brand Overview (Arabic)","1t3xNFdoNDqiQKdEibHuQ3-u9jFHW0f_7",0.1,"PDF"],[1,"Avene - Cleanance Comedomed (Arabic)","1JrWzTGd6g4ff--cVHMPrDDvKTPkaUW5_",1.4,"PDF"],[1,"Avene - Product Notes (Arabic)","1x0dtIs3XB6rkCucN3lpSSU_qoe-I45MY",0.0,"PDF"],[1,"Avene - Ranges Overview","14lfRJMvkVnJxtXYN_DHkYanYZqG2pl6C",1.5,"PDF"],[1,"Avene - Thermal Water Training","1Vp20GoKxex0B6HzPX73SgW79GxDTHQNW",3.3,"PDF"],[1,"Avene - Training (Arabic)","1nf1Lz-dXnMP4Nn4tMC4PDG03LlFG3kJO",7.2,"PDF"],[1,"Bepanthen - Range Summary","1LqW_Qhtep7I81e7RnwHYAy-Hnu-enqHa",0.0,"PDF"],[1,"Bioderma - Brand Overview (Arabic)","17JkCWOzVwtncRkhDWw4g-xjRvzAvr0XS",0.1,"PDF"],[1,"Bioderma - Pigmentbio (Arabic)","1QhvUwLfbdsIsj3s-p0vyTYhZh-yYntQE",2.5,"PDF"],[1,"Bioderma - Product Notes (Arabic)","1H0V7bJYWoupjHBgVG7c5loPmJ3l6Sm2N",0.0,"PDF"],[1,"Bioderma - Training","1Dukr5VLNfjQs0Yb8h1JAwI9ru0vOWVDs",3.1,"PDF"],[1,"Biotaniqe - Pharmacist Training","1IXCO6JqkWxpd0FxXXV_0yY2sirU2cdOM",4.4,"PDF"],[1,"Biotinne - Pharmacist Training","1tmpttHW12Z9f1SRzu-imPgtvhv-f1FBm",2.1,"PDF"],[1,"CeraVe - Range Summary","1Kk0_vL1TzmzZ0rdGdbxUhIO1dlv8Lx8l",0.1,"PDF"],[1,"CHI - Product Knowledge","1D1Xsnx-4qSetiW4DLU8ZBH8rlNWfctge",5.9,"PDF"],[1,"DCL - Acne & Oily Range","15Fv8LBwkDJc-CswvEYx_GuLz9r4ENHjE",0.6,"PDF"],[1,"DCL - Brochure","1qrVGUx9SdNBdRABBifoxOFkyc0tlZYe3",0.7,"PDF"],[1,"DCL - C Scape Night Booster","15df9CO3OSCxqG6mjb8VRCkMmKAlWggRg",0.8,"PDF"],[1,"DCL - Training 2020","10s7ShuPN_kgCVmxkFEaf2UDie1lHNT4H",3.8,"PDF"],[1,"DCL - Vit. C Range","1USKY0tkHnn2BOX0vT-KMlp03ttrEVH0j",1.5,"PDF"],[1,"Dexpanthenol B5 - Hair Notes","1Zilq0VweGo5RH2IyZjcASGICOQYozt7r",0.0,"PDF"],[1,"Dr Organic - Brand Overview","1K0hr0KYEvGc_wFHJ5vaoSe0VlPR0CoQK",0.1,"PDF"],[1,"Ducray - Brand Overview (Arabic)","10WKWs3jMidToiY0xH-vf7bBD1Y0cW16m",0.1,"PDF"],[1,"Ducray - Kelual DS & Squanorm","1Qn2Cl_Rst6ezPr7cHidcEMy5A0Z7inyK",0.1,"PDF"],[1,"Esthederm - Training","1NnNnCAJ30WuYg8HWhxWhPOj2hTDmzD1Q",5.4,"PDF"],[1,"Eucerin - Acne & Exfoliation Notes","1rs0-UbYqKwOw1B1u_9yaCkaA8II6G0BU",0.0,"PDF"],[1,"Eucerin - Anti-Age Notes","1TP8JQEHgIwxhSExuGtFuDo4aYhuv2CnY",0.1,"PDF"],[1,"Eucerin - Brand Overview (Arabic)","1Ftla73QO-RmKpZ2N-GD6AiniLmVdhYXD",0.1,"PDF"],[1,"Eucerin - Product Manual (Arabic)","1ZJya-fE6ZEpGTUdpTbgVhL_wtA7DUdB4",7.2,"PDF"],[1,"Eucerin - Summary","1cAnvc7QUnnHvMxmnGS0OyXy9UDVV29lI",1.3,"PDF"],[1,"Filorga - Flash Cards","1exc4hfkIHBPdT9qG3Z-MHkq--jEmcCxl",5.2,"PDF"],[1,"Filorga - Lip Structure & Products","1z7w-RqGXb6oQ_hvQhhtkv_tobhHt2eM4",0.6,"PDF"],[1,"Filorga - New Items","1h9J_vbpfeR_8A5OgcboAbM2jrtFGUwgH",0.8,"PDF"],[1,"Filorga - Training (Arabic)","1jMMxzOW0nTTvTqzA4lOoRvucbXj9g2pz",2.8,"PDF"],[1,"Foltene - Active Ingredients","1UjhhDNNgvN7D8hFEtoIlwWZf_Q2p25PM",0.1,"PDF"],[1,"Foltene - Brand Overview (Arabic)","1KzeEP3YMaEdVr7ni_6gA23-fVioAdRwb",0.1,"PDF"],[1,"Foltene - Pharmacist Training","1cEidjIJR-G_YwQOxAZ-L2XzOIwNNBA_5",3.2,"PDF"],[1,"Foltene - Training Presentation","1lMy_xfyrl3TcxdOTV-r5aM3tzf0Rb6HG",5.5,"PDF"],[1,"Hair Removal - Techniques & Products","1Xg7h7eEA7u4bJ_NA23stmy2HpnfRZDTX",2.5,"PDF"],[1,"ISIS Pharma - Flash Cards","1mwsmYQIU0qlHow-qxrEYq5USs_QZTErU",3.8,"PDF"],[1,"ISIS Pharma - Sun Care (Arabic)","10TYnPxyaaXm9vRlvY2YUkslAeVirEiTL",1.4,"PDF"],[1,"ISIS Pharma - Sun Care Overview","1VWVcwL47yzJxhnXIUcPOtjGnkN_Lukxt",2.9,"PDF"],[1,"ISIS Pharma - Training","1Y9fdYchzNj9M_E-9Ph4MwJIT7HaylCja",4.9,"PDF"],[1,"L&L Scents - Flash Card","11PKSJh2rFjuKAJ-HfUPOnWjAgz9A_6JY",2.8,"PDF"],[1,"La Roche-Posay - Anthelios XL Brochure","1ngdirpLIF8cKeesz0jyUEx9BdRjoWiZI",0.3,"PDF"],[1,"La Roche-Posay - Brand Overview (Arabic)","1JGGApxr2GuA3Rh7KSaeS6OxXF6AWNJa5",0.1,"PDF"],[1,"La Roche-Posay - Effaclar Duo+ Brochure","1CuBazoOD5XqsYL8nJMWW9LE9rYzvQXhY",0.9,"PDF"],[1,"La Roche-Posay - Lipikar Brochure","1FKjqxrVmSchpzbsB_TSehXnCs-faiZqv",0.7,"PDF"],[1,"Lilies & Love - Body Mist Collection","1g6XQODsyEm2lqnHG-vqAO7w3hp5Sm7qp",2.6,"PDF"],[1,"Matriskin - Booklet 2020","1YbeqAKObz7H3-PdfdmJlPCCT8PcdxltG",1.8,"PDF"],[1,"Matriskin - Training","1ruBU2asd1fTjcO6_mSVNUJno8UWHbXKI",7.3,"PDF"],[1,"Nuxe - Products Training","11w0phigJUW1tsSWWnHW-muEdNJcWXFq0",6.4,"PDF"],[1,"Nuxe - Summary","1GMJmHpqBA5O9xKxZSPSVsv7oYlan2E17",1.6,"PDF"],[1,"Oilatum - Brand Overview (Arabic)","1j-LpHjpWuUXOxILocXFIpPisKwz8FAwi",0.1,"PDF"],[1,"Oilatum - Ingredients Mind Map","1Rkd7SaJ6D5zwm5bOMukghAg8fgDsevnB",0.1,"PDF"],[1,"Orange Daily & Kaminomoto - Notes","1FO6BmyuZmVDSTFTUloOUqxlQfx8JheJb",0.3,"PDF"],[1,"Payot - Brief","1ivg3guvBaKL2KsydxtYHobFRiNJWY4_p",2.5,"PDF"],[1,"Pharmaceris - Range Summary","1icXUKfCZtLdGuXA2YtFWWnlxIrKfgWVu",0.0,"PDF"],[1,"Premium Deodorant - Trend Case","1N6ihdDhFq5uMCX9IRsvVubwPmmFXVl7l",1.7,"PDF"],[1,"Royce Derma - Flash Card","1fw2hc8XRgZKEMKtBklAAIuNg8vtrFncs",0.8,"PDF"],[1,"Saubelle - Presentation","19VF9eVuMg7IWw2ppfkJ3Ya8vTXYVMnWA",1.3,"PPTX"],[1,"Sun Care - Mind Map","172qHpoTAPmgYk88D_2ibi4c4UDCYRXl2",7.9,"PDF"],[1,"Sunscreen - Guide","1ygigBhUO6MIuvD6ERAQ0-hWZV4YsjJtk",3.1,"PDF"],[1,"SVR - Training (Arabic) 1","1n2YY517w6kAfTGzbKnwMZmbY3tJgylBR",1.8,"PDF"],[1,"SVR - Training (Arabic) 2","1RnEol5UmJSSLyj7H6JYZXGwNsOiR9436",2.1,"PDF"],[1,"SVR - Training (English)","1RuRdBwmdN8iTTkwKQKIII2ZXgApuPmW9",3.4,"PDF"],[1,"Uriage - Makeup Remover Line","1w9hMqFr4qnM-L5p2jivLRJe65IyZCV58",1.0,"PDF"],[1,"Uriage - Product Notes (Arabic)","1KFhxqzS3leXWfdf1lZY1D5X6HKT6737J",0.0,"PDF"],[1,"Vichy - Brand Overview (Arabic)","132nOnUwR6rNJeBTGukDiJs7ox1XKxdUD",0.1,"PDF"],[1,"Vichy - Normaderm & Dercos Notes","1DJRlD9XvqnMy8tMO_XvqFfj1wzUdRUjV",0.1,"PDF"],[1,"Vidaderm - Flash Cards","15-OfjqIt4Nd75T6AQ1vdYwL0dyd1m9xN",0.6,"PDF"],[1,"Vidaderm - Ranges","1QamurRmgT9pdNoE5qv1eSuzlg5J00qNJ",4.9,"PDF"],[2,"P2E - Cash Manual","1t9Ho-qtXiiOTXSzHRDBeRoHtRpZ0zHvT",0.9,"PDF"],[2,"تعليمات التأمين - صرف قطرات العين المرطبة","1A_yIe7PMxkjKXKPFTLI2zNj82e6PvVD5",0.2,"PDF"],[2,"حل مشاكل البورتال - Helpdesk","18O29Df8LjlsY2opD3HPOT_jdc9svDkGx",0.9,"PDF"],[2,"دليل التحصيل - الصيدلي","1jF_Xsa9T2mGAunNLwyXl4-p48epSKe9B",0.7,"PDF"],[2,"طباعة كروت العروض داخل الصيدلية","11b_T9h2WoG0zj_is-LPcXhUrATbd5A4Q",0.7,"PDF"],[2,"طريقة عمل Order Claim على البورتال","1l9be_LCIrUB0nA77m4yZvAUw-aR0IMlj",1.7,"PDF"],[2,"طلب الأصناف الخاصة - Special Request","1ubQfbGeSUIwGMCcaHsujfTKgEFjXx7b3",2.7,"PDF"],[2,"طلب حساب منصة وصفتي","159PdUiseR_XDtV3d8Alb03Cu_Qz7PAq4",0.9,"PDF"],[3,"House Brand - C-Level","1Z1HXtYMmqH6LyFAW8CW0QdAGXA8tdPOo",1.1,"PDF"],[3,"PVL - Medicine Range","1zeuwPqchxw78r78jlrm-or09_VkXfVfO",6.1,"PDF"],[3,"PVL - Products Map","1Kz6-I8zktvYigR2PszUvtdnfz9whQXH6",38.0,"PDF"],[3,"Ronzac - Catalog (Arabic)","1iFhYmr4hvnl1810hp9_2UWJJK2NSoOaQ",64.8,"PDF"],[3,"Ronzac - Catalog (English)","1mkWO8mB60y6aEcMl1VQjgrkByzH65PLt",31.6,"PDF"],[3,"SMC","1as-uTr_nLoOqgGkXAJaVL2pI5Pe1VeMf",92.4,"PDF"]];
+  MAT.forEach(([c,title,id,mb,ext])=>CONFIG.materials.push({group:CONFIG.materialsCats[c].name,cat:c,title,id,mb,ext}))})();
+(()=>{const G=[["1. الأدوية — Medicine", "12 يوم · التقييم على معرفة الأصناف واستعمالها والجرعة الشائعة", ["Anti diabetic (Hypoglycemic agents & Insulin)", "Cardiovascular drugs (Antihypertensive & Angina)", "GIT", "Antihyperlipidemic", "Antibiotics", "Antipyretics / Analgesics / Anti-inflammatory", "CNS", "Vitamins", "Respiratory system (Anti-cough & Anti-allergy)", "Refrigerator medicine", "Herbal products", "Vascular insufficiency", "Dietary supplement", "Systemic antiviral", "Systemic antifungal", "Vaginal preparations", "Suppositories", "Sex hormones & erectile dysfunction", "Prostate medicine", "Topical preparations (creams & ointments)", "Ophthalmics", "Oral drops", "Nasal preparations (drops / gel / spray)", "Local preparations (drops / powders)", "Inhalers", "Other miscellaneous drugs"]], ["2. المستحضرات — Cosmetics", "4 أيام · استعمال الأصناف المهمة وطرق البيع وأماكن الأقسام في الصيدلية", ["Medicated cosmetics", "Other cosmetics categories"]], ["3. الحليب — Milk", "يوم", ["Normal & special formula / infant & adult nutrition"]], ["4. الأجهزة الطبية — Medical devices", "يوم", ["Glucometers / Blood pressure machines / Nebulizers"]], ["5. مهارات التواصل", "يوم · بشرح المشرف", ["التواصل مع العملاء والتعامل مع أنماطهم المختلفة", "التواصل مع الزملاء والمديرين والأقسام المختلفة", "التعامل مع الإيميلات"]], ["6. مهارات البيع", "يوم", ["مراحل عملية البيع (Precall planning ← Opening ← Questioning ← Presenting ← Handling objections ← Closing ← Post call analysis)"]], ["7. الرعاية الصيدلية — Pharmaceutical care", "نفس يوم مهارات البيع", ["المفهوم وأهميته للصيدلي والعميل"]], ["8. إدارة المخزون", "يوم", ["التعامل مع النواقص", "التعامل مع المخزون الزائد", "التعامل مع الإكسبير ومتابعته", "استقبال الطلبية وجردها واستلامها على DRS"]], ["9. برنامج BM والبيع (POS)", "يوم", ["التعامل مع برنامج البيع", "التقارير الأساسية في BM والاستفادة منها"]], ["10. التأمين", "يوم", ["شركات التأمين المختلفة وطريقة الصرف"]], ["11. اللوائح", "يوم", ["لائحة الجزاءات ونظام العمل والمخالفات الواجب تلافيها (Code of Ethics)"]], ["12. التقييم", "نفس يوم إدارة المخزون", ["شرح نقاط التقييم بالتفصيل"]]];
+  CONFIG.groupHelp={};G.forEach(([g,help,items],gi)=>{CONFIG.groupHelp[g]=help;items.forEach((title,i)=>CONFIG.checklist.push({id:`g${gi+1}-${i+1}`,group:g,title}))})})();
+
+const IC={
+  home:'<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M10 21v-6h4v6"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.2-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><circle cx="17" cy="9" r="2.6"/><path d="M17 14.5c2.4.2 4 1.8 4.5 4.5"/>',
+  book:'<path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H20v15H5.5A1.5 1.5 0 0 0 4 19.5z"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/><path d="M8 7h8M8 10.5h6"/>',
+  check:'<rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="m8 9 1.6 1.6L13 7.2"/><path d="m8 15 1.6 1.6L13 13.2"/><path d="M15.5 9.5H17M15.5 15.5H17"/>',
+  sheet:'<rect x="3.5" y="3.5" width="17" height="17" rx="2.5"/><path d="M3.5 9h17M3.5 14.5h17M9.5 9v11.5"/>',
+  dash:'<rect x="3" y="3" width="7.5" height="9" rx="1.8"/><rect x="13.5" y="3" width="7.5" height="5.5" rx="1.8"/><rect x="13.5" y="11.5" width="7.5" height="9.5" rx="1.8"/><rect x="3" y="15" width="7.5" height="6" rx="1.8"/>',
+  exam:'<path d="M14 3H6.5A1.5 1.5 0 0 0 5 4.5v15A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5V8z"/><path d="M14 3v5h5"/><path d="m8.5 14 2 2 4-4.5"/>',
+  share:'<circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="m8.3 10.8 7.4-4M8.3 13.2l7.4 4"/>',
+  plus:'<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
+  wa:'<path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.6-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z"/>',
+  dl:'<path d="M12 4v11"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M5 19.5h14"/>',
+  search:'<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/>',
+  cal:'<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/>',
+  quiz:'<circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 1 1 3.4 2.3c-.7.3-1 .8-1 1.5v.6"/><path d="M12 16.8h.01"/>',
+  pill:'<rect x="3" y="8.5" width="18" height="7" rx="3.5" transform="rotate(-40 12 12)"/><path d="m9.2 9.2 5.6 5.6"/>',
+  drop:'<path d="M12 3.5c3.5 4.3 6 7.6 6 10.5a6 6 0 0 1-12 0c0-2.9 2.5-6.2 6-10.5z"/><path d="M9.5 14.5a2.5 2.5 0 0 0 2.5 2.5"/>',
+  clip:'<rect x="5" y="4.5" width="14" height="16.5" rx="2"/><path d="M9 4.5V3.5h6v1"/><path d="M8.5 10h7M8.5 13.5h7M8.5 17h4"/>',
+  tag:'<path d="M3.5 12.5V4.5a1 1 0 0 1 1-1h8l8 8-9 9z"/><circle cx="8" cy="8" r="1.5"/>',
+  ext:'<path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/>'
+};
+IC.logout='<path d="M15 4h3.5A1.5 1.5 0 0 1 20 5.5v13a1.5 1.5 0 0 1-1.5 1.5H15"/><path d="M10 16.5 5.5 12 10 7.5"/><path d="M5.5 12H15"/>';
+IC.chev='<path d="m14.5 6-6 6 6 6"/>';
+IC.lock='<rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/>';
+IC.sign='<path d="M3 17.5c2.5-2 4.5-6.5 6-6.5 2 0-1 6 1 6 1.5 0 2.5-3 4-3 1.2 0 1 2.5 2.5 2.5S20 15 21 14.5"/><path d="M3 21h18"/>';
+IC.key='<circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5"/><path d="m16 7 2.5 2.5"/><path d="m14 9 2 2"/>';
+IC.edit='<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>';
+IC.trash='<path d="M4 7h16"/><path d="M9 7V4.5h6V7"/><path d="M6.5 7l1 13h9l1-13"/>';
+IC.pause='<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
+IC.trend='<path d="M3.5 17.5 9 12l4 4 7.5-8"/><path d="M15 8h5.5v5.5"/>';
+const ic=(n,cls="i")=>`<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||""}</svg>`;
+
+/* ===== أدوات ===== */
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmtDay=d=>{if(!d)return "—";try{return new Intl.DateTimeFormat("ar-u-ca-gregory-nu-latn",{weekday:"long",day:"numeric",month:"long"}).format(new Date(d+"T12:00:00"))}catch(e){return d}};
+const fmtShort=d=>{if(!d)return "—";try{return new Intl.DateTimeFormat("ar-u-ca-gregory-nu-latn",{day:"numeric",month:"short"}).format(new Date(d+"T12:00:00"))}catch(e){return d}};
+const store={get(k){try{return localStorage.getItem(k)??sessionStorage.getItem(k)}catch(e){return null}},
+  set(k,v,keep){try{(keep?localStorage:sessionStorage).setItem(k,v)}catch(e){}},
+  del(k){try{localStorage.removeItem(k);sessionStorage.removeItem(k)}catch(e){}}};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),3200)}
+const S={token:null,user:null,tab:"home",cache:{},sub:null,login:{step:"id"},busy:false,filter:"Active Trainee",q:"",cat:-1,offline:false};
+
+async function api(action,body={}){
+  if(!API_URL||API_URL.indexOf("__")===0)throw new Error("التطبيق لسه ما اتربطش بالـ API. كلّم مدير المنصة.");
+  let r;
+  try{r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(Object.assign({action,token:S.token},body))})}
+  catch(e){throw new Error("مفيش اتصال بالإنترنت. اتأكد من النت وجرّب تاني.")}
+  let j;try{j=await r.json()}catch(e){throw new Error("السيرفر مش بيرد دلوقتي. جرّب تاني بعد شوية.")}
+  if(!j.ok){if(j.error==="AUTH"){logout(true);throw new Error("انتهت الجلسة. ادخل تاني.")}throw new Error(j.error||"حصل خطأ.")}
+  return j;
+}
+const ckey=k=>"j3c-"+(S.user?S.user.uid:"x")+"-"+k;
+async function load(key,action,body,force){
+  if(S.cache[key]&&!force)return S.cache[key];
+  try{const j=await api(action,body);S.cache[key]=j;S.offline=false;try{localStorage.setItem(ckey(key),JSON.stringify(j))}catch(e){}return j}
+  catch(e){let c=null;try{c=JSON.parse(localStorage.getItem(ckey(key))||"null")}catch(_){}
+    if(c&&/اتصال|السيرفر/.test(e.message)){S.offline=true;S.cache[key]=c;return c}throw e}
+}
+
+/* ===== الدخول ===== */
+function renderLogin(){
+  const L=S.login,step=L.step;
+  const err=L.err?`<div class="err" role="alert">${esc(L.err)}</div>`:"",ok=L.ok?`<div class="okmsg">${esc(L.ok)}</div>`:"";
+  const btn=(label,id="go")=>`<button class="btn gold" id="${id}" type="submit" ${S.busy?"disabled":""}>${S.busy?'<span class="spinner"></span>':label}</button>`;
+  let card="";
+  if(step==="id")card=`<form class="lcard" id="f-id" autocomplete="on"><h2>تسجيل الدخول</h2>
+    <div class="field"><label for="uid">رقم المستخدم</label><input id="uid" inputmode="numeric" autocomplete="username" value="${esc(L.uid||"")}" placeholder="16567" required></div>
+    <p class="note">المتدرب: رقمك الوظيفي أو رقم جوالك · المدرب: الكود اللي وصلك · مدير المنصة: 1</p>${err}${btn("متابعة")}</form>`;
+  if(step==="pin")card=`<form class="lcard" id="f-pin"><h2>أهلاً ${esc(L.first||"")} 👋</h2>
+    <div class="field"><label for="pin">اكتب الـ PIN (4 أرقام)</label><input id="pin" class="pin" inputmode="numeric" maxlength="4" autocomplete="current-password" type="password" required></div>
+    <label class="check"><input type="checkbox" id="remember" ${L.remember!==false?"checked":""}> افتكرني على الجهاز ده 30 يوم</label>${err}${btn("دخول")}
+    <button class="linkbtn" type="button" id="forgot">نسيت الـ PIN؟</button><button class="linkbtn" type="button" id="other">مش أنا — رقم تاني</button></form>`;
+  if(step==="code")card=`<form class="lcard" id="f-code"><h2>${L.hasPin?"استرجاع الـ PIN":"أول دخول"}</h2>
+    <p class="note">بعتنا كود من 6 أرقام على إيميلك <bdi class="ltr">${esc(L.email||"")}</bdi>. الكود صالح 10 دقايق.</p>
+    <div class="field"><label for="code">الكود</label><input id="code" inputmode="numeric" maxlength="6" autocomplete="one-time-code" required></div>${ok}${err}${btn("تأكيد")}
+    <button class="linkbtn" type="button" id="resend">ابعت الكود تاني</button><button class="linkbtn" type="button" id="other">رجوع</button></form>`;
+  if(step==="start")card=`<form class="lcard" id="f-start"><h2>أهلاً ${esc(L.first||"")} 👋</h2>
+    <p class="note">ده أول دخول ليك. هنبعتلك كود على إيميلك <bdi class="ltr">${esc(L.email||"")}</bdi> علشان نتأكد إنه إنت، وبعدين تختار PIN.</p>${err}${btn("ابعت الكود")}
+    <button class="linkbtn" type="button" id="other">رقم تاني</button></form>`;
+  if(step==="newpin")card=`<form class="lcard" id="f-new"><h2>اختار PIN</h2><p class="note">4 أرقام هتدخل بيهم كل مرة. ما تختارش 1234 أو أرقام مكررة.</p>
+    <div class="field"><label for="p1">الـ PIN</label><input id="p1" class="pin" inputmode="numeric" maxlength="4" type="password" autocomplete="new-password" required></div>
+    <div class="field"><label for="p2">اكتبه تاني</label><input id="p2" class="pin" inputmode="numeric" maxlength="4" type="password" autocomplete="new-password" required></div>
+    <label class="check"><input type="checkbox" id="remember" ${L.remember!==false?"checked":""}> افتكرني على الجهاز ده 30 يوم</label>${err}${btn("حفظ ودخول")}</form>`;
+  $("#root").innerHTML=`<div class="login"><div class="wrap">
+    <div style="display:flex;gap:14px;align-items:center"><div class="mark" aria-hidden="true">℞</div><div><h1>تدريب صيادلة جدة 3</h1><p class="sub">تطبيق الصيادلة الجدد · المدربين · مدير المنصة</p></div></div>
+    ${card}<p class="sub" style="text-align:center;font-size:.76rem">مدير المنصة: <span class="ltr">Dr. Qassem</span> · نسخة ${VERSION}</p></div></div>`;
+  const f=$(".lcard");if(f)setTimeout(()=>{const i=f.querySelector("input:not([type=checkbox])");if(i)i.focus()},50);
+}
+async function loginStep(fn){S.login.err="";S.login.ok="";S.busy=true;renderLogin();try{await fn()}catch(e){S.login.err=e.message}S.busy=false;if(!S.user)renderLogin()}
+function finishLogin(j){const keep=S.login.remember!==false;S.token=j.token;S.user=j.user;store.set("j3-token",j.token,keep);store.set("j3-user",JSON.stringify(j.user),keep);
+  S.login={step:"id",uid:j.user.uid};S.tab="home";S.sub=null;S.cache={};renderApp()}
+document.addEventListener("submit",e=>{e.preventDefault();if(S.busy)return;const id=e.target.id;const L=S.login;
+  const val=k=>{const el=document.getElementById(k);return el?el.value.trim():""},chk=()=>{const el=document.getElementById("remember");return el?el.checked:true};
+  if(id==="f-id"){const uid=val("uid");loginStep(async()=>{L.uid=uid;const j=await api("auth.start",{uid});Object.assign(L,{uid:j.uid,first:j.first,email:j.email,hasPin:j.hasPin});L.step=j.hasPin?"pin":"start"})}
+  if(id==="f-pin"){const pin=val("pin");L.remember=chk();loginStep(async()=>{const j=await api("auth.pin",{uid:L.uid,pin,remember:L.remember});finishLogin(j)})}
+  if(id==="f-start")loginStep(async()=>{const j=await api("auth.sendCode",{uid:L.uid});L.email=j.email;L.step="code"});
+  if(id==="f-code"){const code=val("code");loginStep(async()=>{const j=await api("auth.verifyCode",{uid:L.uid,code});L.setup=j.setupToken;L.step="newpin"})}
+  if(id==="f-new"){const a=val("p1"),b=val("p2");L.remember=chk();loginStep(async()=>{
+    if(!/^\d{4}$/.test(a))throw new Error("الـ PIN لازم يكون 4 أرقام.");if(a!==b)throw new Error("الـ PIN مش متطابق في المرتين.");
+    const j=await api("auth.setPin",{setupToken:L.setup,pin:a,remember:L.remember});finishLogin(j)})}
+});
+document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t||!S.login||S.user)return;const L=S.login;
+  if(t.id==="other"){S.login={step:"id",uid:""};renderLogin()}
+  if(t.id==="forgot")loginStep(async()=>{const j=await api("auth.sendCode",{uid:L.uid});L.email=j.email;L.step="code"});
+  if(t.id==="resend")loginStep(async()=>{const j=await api("auth.sendCode",{uid:L.uid});L.email=j.email;L.ok="الكود اتبعت تاني."});
+});
+function logout(expired){store.del("j3-token");store.del("j3-user");S.token=null;S.user=null;S.cache={};S.login={step:"id",uid:"",err:expired?"انتهت الجلسة. ادخل تاني.":""};renderLogin()}
+
+/* ===== الشاشات ===== */
+const isStaff=()=>S.user&&(S.user.role==="admin"||S.user.role==="trainer");
+function tabsFor(){return isStaff()
+  ?[["home","الرئيسية","home"],["people","المتدربين","users"]].concat(S.user.role==="admin"?[["users","المستخدمين","key"]]:[],[["materials","المواد","book"],["plan","الخطة","check"]])
+  :[["home","رحلتي","home"],["plan","الخطة","check"],["files","ملفاتي","book"],["quizzes","اختباراتي","quiz"]]}
+function renderApp(){
+  const tabs=tabsFor();if(!tabs.find(t=>t[0]===S.tab))S.tab="home";
+  $("#root").innerHTML=`<header class="top"><div class="wrap"><div class="bar"><div class="mark" aria-hidden="true">℞</div>
+    <div class="brand"><h1>تدريب صيادلة جدة 3</h1><p>${esc(S.user.name)} · ${esc(S.user.roleName||"")}</p></div>
+    <div class="acts"><button class="iconbtn" id="logout" aria-label="تسجيل الخروج" title="تسجيل الخروج">${ic("logout")}</button></div></div>
+    <nav class="tabs" role="tablist" aria-label="أقسام التطبيق">${tabs.map(([id,l,i])=>`<button role="tab" data-tab="${id}" aria-selected="${S.tab===id}">${ic(i)}<span>${l}</span></button>`).join("")}</nav></div><div class="ribbon"></div></header>
+    <div id="off" class="offline" hidden>مفيش اتصال — بتشوف آخر بيانات اتحمّلت.</div>
+    <main class="wrap" id="main"><div class="loading"><span class="spinner"></span>بحمّل…</div></main>
+    <footer class="wrap foot"><span>مدير المنصة: <b class="ltr">Dr. Qassem</b></span><span>نسخة ${VERSION}</span></footer>`;
+  draw();
+}
+async function draw(force){
+  const m=$("#main");if(!m)return;
+  try{const html=await view(force);m.innerHTML=html;$("#off").hidden=!S.offline;after()}
+  catch(e){m.innerHTML=`<div class="empty"><strong>ما قدرناش نحمّل البيانات</strong>${esc(e.message)}<div class="actions" style="justify-content:center;margin-top:12px"><button class="btn ghost" data-retry>جرّب تاني</button></div></div>`}
+}
+async function view(force){
+  if(S.sub&&S.sub.kind==="quiz")return quizView(await load("quiz-"+(S.sub.key||"me")+"-"+S.sub.formId,"trainee.quiz",{formId:S.sub.formId,key:S.sub.key},force));
+  if(S.sub&&S.sub.kind==="trainee"){const d=await load("th-"+S.sub.key,"trainee.home",{key:S.sub.key},force);return profileView(d)}
+  if(isStaff()){
+    if(S.tab==="home")return staffHome(await load("staff","staff.home",{},force));
+    if(S.tab==="people")return peopleView(await load("staff","staff.home",{},force));
+    if(S.tab==="users"&&S.user.role==="admin")return usersView(await load("users","users.list",{},force));
+    if(S.tab==="materials")return materialsView();
+    if(S.tab==="plan")return planView(null);
+  }
+  const d=await load("me","trainee.home",{},force);
+  if(S.tab==="home")return homeView(d);
+  if(S.tab==="plan")return planView(d);
+  if(S.tab==="files")return filesView(await load("files","files",{},force));
+  if(S.tab==="quizzes")return quizzesView(d,false);
+  return "";
+}
+function after(){}
+
+/* رسوم */
+function ring(p,label){const r=48,c=2*Math.PI*r,off=c*(1-Math.max(0,Math.min(100,p))/100);
+  return `<svg class="ring" viewBox="0 0 118 118" role="img" aria-label="التقدم ${p}%"><circle class="pad" cx="59" cy="59" r="58"/><circle class="bgc" cx="59" cy="59" r="${r}"/><circle class="fg" cx="59" cy="59" r="${r}" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/><text x="59" y="62">${p}%</text><text class="s" x="59" y="80">${label}</text></svg>`}
+function spark(rows){const pts=rows.filter(q=>q.pct!=null).slice().reverse();if(pts.length<2)return "";
+  const W=320,H=120,pl=26,pr=10,pt=12,pb=22,X=i=>pl+i*(W-pl-pr)/(pts.length-1),Y=v=>pt+(100-v)*(H-pt-pb)/100;
+  const line=pts.map((q,i)=>`${X(i).toFixed(1)},${Y(q.pct).toFixed(1)}`).join(" ");
+  return `<div class="card"><div class="sect-h"><h3>درجاتك في الاختبارات</h3><span class="note">آخر ${pts.length} اختبارات</span></div>
+  <svg class="spark" viewBox="0 0 ${W} ${H}" role="img" aria-label="منحنى الدرجات">${[0,50,100].map(v=>`<line class="gd" x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${pl-6}" y="${Y(v)+3}" text-anchor="end">${v}</text>`).join("")}
+  <polygon class="ar" points="${X(0)},${Y(0)} ${line} ${X(pts.length-1)},${Y(0)}"/><polyline class="ln" points="${line}"/>
+  ${pts.map((q,i)=>`<circle class="dot" cx="${X(i)}" cy="${Y(q.pct)}" r="3.5"/><text x="${X(i)}" y="${H-6}" text-anchor="middle">${esc(fmtShort(q.day))}</text>`).join("")}</svg></div>`}
+const scoreCls=p=>p==null?"":p>=80?"good":p>=50?"mid":"low";
+
+/* المتدرب: رحلتي */
+function homeView(d){const t=d.trainee;
+  const exp=t.expected!=null?`<span class="chip ${t.pct>=t.expected?"ok":"bad"}">${t.pct>=t.expected?"على المسار":"متأخر"} · المفروض حوالي ${t.expected}%</span>`:"";
+  const status=t.status==="Active Trainee"?(t.dayN!=null?`اليوم ${t.dayN} من ${t.planDays}`:"في فترة التدريب"):t.status==="Fixed Pharmacist"?"صيدلي مثبت":"";
+  const q=d.quiz,last=d.quizzes[0];
+  const tasks=[];
+  tasks.push(t.ack==="لم يُستلم"
+    ?{hot:1,icon:"sign",b:"وقّع إقرار التعهد (F HR-08)",s:"التوقيع من التطبيق جاي في التحديث الجاي. دلوقتي: افتح النموذج من «ملفاتي»، املاه ووقّعه، وابعته رد على إيميل ملفات التدريب.",a:`<button class="btn sm" data-go="files">${ic("book")}فتح النموذج</button>`}
+    :{done:1,icon:"check",b:"الإقرار",s:"حالته: "+t.ack});
+  if(t.status==="Active Trainee")tasks.push({icon:"check",b:"حدّث الـ Checklist",s:`علّمت على ${t.n} من ${t.total} بند. علّم على اللي خلّصته كل يوم.`,a:t.checklist?`<a class="btn sm" target="_blank" rel="noopener" href="${esc(t.checklist)}">${ic("ext")}فتح الـ Checklist</a>`:""});
+  tasks.push(q.openNow?{hot:1,icon:"quiz",b:"الاختبار الأسبوعي مفتوح دلوقتي",s:"افتح إيميلك ودوس «ابدأ الاختبار». متاح لحد الساعة 5 بس."}
+    :{icon:"cal",b:"الاختبار الأسبوعي الجاي",s:`${fmtDay(q.next)} الساعة 4:00 العصر · 10 أسئلة · ساعة واحدة`});
+  return `<section class="hero"><div class="me"><div><span class="eyebrow">${esc(status)}</span><h2>${esc(t.name)}</h2>
+    <p>${t.n} من ${t.total} بند في الـ Checklist</p><div class="chips">${exp}${t.overdue?'<span class="chip bad">عدّى خطة الـ 24 يوم</span>':""}</div></div>${ring(t.pct,"من الخطة")}</div></section>
+  <section class="sect"><div class="sect-h"><h2>المطلوب منك</h2></div><div class="todo">${tasks.map(x=>`<div class="task ${x.hot?"hot":""} ${x.done?"done":""}"><span class="ic">${ic(x.icon)}</span><div><b>${x.b}</b><span class="note">${x.s}</span>${x.a?`<div class="actions">${x.a}</div>`:""}</div></div>`).join("")}</div></section>
+  ${last?`<section class="sect"><div class="sect-h"><h2>آخر اختبار</h2><button class="btn ghost sm" data-go="quizzes">كل الاختبارات</button></div>${quizRows([last],null)}</section>`:""}`}
+
+/* الخطة */
+function planStrip(){const tot=CONFIG.plan.reduce((a,x)=>a+x[1],0);
+  return `<div class="plan"><div class="strip" role="img" aria-label="خطة ${tot} يوم عمل">${CONFIG.plan.map(([n,d,c])=>`<i style="flex:${d};background:${c}" title="${esc(n)}: ${d} يوم"></i>`).join("")}</div>
+  <div class="legend">${CONFIG.plan.map(([n,d,c])=>`<div><i style="background:${c}"></i><span>${esc(n)}</span><b class="num">${d===1?"يوم":d+" يوم"}</b></div>`).join("")}</div></div>`}
+function secBars(secs){return `<div class="secs">${secs.map(s=>{const p=s.total?Math.round(s.done/s.total*100):0;return `<div class="sec"><div class="row1"><b>${esc(s.name)}</b><span class="note num" dir="ltr">${s.done} / ${s.total}</span></div><div class="pbar"><i class="${p>=100?"full":""}" style="width:${p}%"></i></div></div>`}).join("")}</div>`}
+function planView(d){
+  return `<div class="sect"><h2>خطة التدريب العملي</h2><p class="lede">24 يوم عمل حسب خطة «<bdi>On site training for Saudi pharmacists</bdi>».</p></div>
+  <section class="card sect">${planStrip()}</section>
+  ${d?`<section class="card sect"><div class="sect-h"><h3>تقدمك في كل قسم</h3>${d.trainee.checklist?`<a class="btn ghost sm" target="_blank" rel="noopener" href="${esc(d.trainee.checklist)}">${ic("ext")}الـ Checklist</a>`:""}</div>${secBars(d.sections)}</section>`:""}
+  <div class="sect-h"><h3>بنود كل قسم <span class="note num">(${CONFIG.checklist.length} بند)</span></h3></div>
+  <div class="groups">${groups(CONFIG.checklist).map(([g,items])=>`<div class="grp"><div><h3><bdi>${esc(g)}</bdi></h3><span class="note">${esc(CONFIG.groupHelp[g]||"")}</span></div><ul>${items.map(c=>`<li><bdi>${esc(c.title)}</bdi></li>`).join("")}</ul></div>`).join("")}</div>`}
+function groups(list){const m=new Map();list.forEach(x=>{if(!m.has(x.group))m.set(x.group,[]);m.get(x.group).push(x)});return [...m]}
+
+/* ملفاتي + المواد */
+const dl=id=>`https://drive.google.com/uc?export=download&id=${encodeURIComponent(id)}`;
+const viewUrl=id=>`https://drive.google.com/file/d/${encodeURIComponent(id)}/view`;
+const folderUrl=id=>`https://drive.google.com/drive/folders/${encodeURIComponent(id)}`;
+function filesView(f){const me=S.cache.me&&S.cache.me.trainee;
+  return `<div class="sect"><h2>ملفاتي</h2><p class="lede">ملفات برنامج التدريب اللي وصلتك على الإيميل، ومكتبة المواد كاملة.</p></div>
+  <div class="files">${f.files.map(x=>`<div class="file"><span class="ft ${esc(x.ext.toLowerCase())}">${esc(x.ext||"FILE")}</span><button class="t linkish" data-file="${esc(x.id)}"><bdi>${esc(x.kind==="ack"?"نموذج إقرار وتعهد التدريب (F HR-08)":x.kind==="plan"?"خطة التدريب العملي":x.name.replace(/\.[a-z0-9]+$/i,""))}</bdi><span class="note num"><bdi class="ltr">${x.mb<0.1?"&lt; 0.1":x.mb} MB</bdi> · اضغط للتحميل</span></button>${x.kind==="ack"&&me?`<span class="chip ${me.ack==="لم يُستلم"?"wait":"ok"}">${esc(me.ack)}</span>`:""}<button class="dl" data-file="${esc(x.id)}" aria-label="تحميل">${ic("dl")}</button></div>`).join("")}</div>
+  ${materialsView(true)}`}
+function fileRow(x){return `<div class="file"><span class="ft ${x.ext.toLowerCase()}">${esc(x.ext)}</span><a class="t" target="_blank" rel="noopener" href="${esc(viewUrl(x.id))}"><bdi>${esc(x.title)}${CONFIG.newIds.includes(x.id)?'<span class="badge-new">جديد</span>':""}</bdi><span class="note num"><bdi class="ltr">${x.mb<1?"&lt; 1":x.mb} MB</bdi></span></a><a class="dl" target="_blank" rel="noopener" href="${esc(dl(x.id))}" aria-label="تحميل ${esc(x.title)}">${ic("dl")}</a></div>`}
+function materialsView(inner){const m=CONFIG.materials;
+  return `<div class="sect"><${inner?"h3":"h2"}>مواد التدريب</${inner?"h3":"h2"}><p class="lede">${m.length} ملف في ${CONFIG.materialsCats.length} أقسام. اضغط اسم الملف تقراه، أو سهم التحميل ينزل على الموبايل.</p></div>
+  <div class="cats">${CONFIG.materialsCats.map((c,ci)=>`<button class="cat" data-cat="${ci}" aria-pressed="${S.cat===ci}"><span class="ic">${ic(c.icon)}</span><b>${esc(c.name)}</b><span class="num">${m.filter(x=>x.cat===ci).length} ملف</span></button>`).join("")}</div>
+  <label class="search">${ic("search")}<span class="sr">بحث في الملفات</span><input type="search" id="mat-q" placeholder="ابحث: Eucerin، Pain، CGP…" value="${esc(S.q)}" dir="auto" autocomplete="off"></label>
+  <div id="mat-list">${matList()}</div>`}
+function matList(){const m=CONFIG.materials,q=S.q.trim().toLowerCase();
+  if(S.cat<0&&!q)return `<div class="featured">${CONFIG.featured.map(id=>m.find(x=>x.id===id)).filter(Boolean).map(x=>`<a class="feat" target="_blank" rel="noopener" href="${esc(viewUrl(x.id))}"><span class="ft ${x.ext.toLowerCase()}">${esc(x.ext)}</span><div><b><bdi>${esc(x.title)}</bdi>${CONFIG.newIds.includes(x.id)?'<span class="badge-new">جديد</span>':""}</b><span class="num"><bdi class="ltr">${x.mb<1?"&lt; 1":x.mb} MB</bdi></span></div></a>`).join("")}</div>`;
+  const cats=CONFIG.materialsCats.map((c,ci)=>({c,items:m.filter(x=>x.cat===ci&&(S.cat<0||S.cat===ci)&&(!q||(x.title+" "+x.group).toLowerCase().includes(q)))})).filter(g=>g.items.length);
+  if(!cats.length)return `<div class="empty"><strong>مفيش ملف بالاسم ده</strong>جرّب كلمة تانية.</div>`;
+  return `<div class="files">${cats.map(g=>`<div class="grp-h"><span>${esc(g.c.name)} <span class="note num">(${g.items.length})</span></span><a target="_blank" rel="noopener" href="${esc(folderUrl(g.c.folder))}">فتح الفولدر ${ic("ext")}</a></div>${g.items.map(fileRow).join("")}`).join("")}</div>`}
+
+/* اختباراتي */
+function quizRows(rows,key){return `<div class="qlist">${rows.map(q=>`<button class="qrow" data-quiz="${esc(q.formId)}" ${key?`data-key="${esc(key)}"`:""}><span class="sc ${scoreCls(q.pct)} num">${q.pct==null?"—":q.score+"/10"}</span><div><b>${esc(fmtDay(q.day))}</b><span class="note">${q.pct==null?"ما شاركتش — شوف الإجابات الصحيحة":"اضغط تشوف إجاباتك والشرح"}</span></div>${ic("chev")}</button>`).join("")}</div>`}
+function quizzesView(d,key){const q=d.quiz;
+  return `<div class="sect"><h2>${key?"الاختبارات الأسبوعية":"اختباراتي"}</h2><p class="lede">كل اثنين الساعة 4 العصر · 10 أسئلة · ساعة واحدة. ${d.quizAvg!=null?`المتوسط: <b>${d.quizAvg}%</b>`:""}</p></div>
+  ${!key&&q.openNow?`<div class="task hot"><span class="ic">${ic("quiz")}</span><div><b>الاختبار مفتوح دلوقتي</b><span class="note">افتح إيميلك ودوس «ابدأ الاختبار».</span></div></div>`:""}
+  ${spark(d.quizzes)}
+  ${d.quizzes.length?quizRows(d.quizzes,key):`<div class="empty"><strong>لسه مفيش اختبارات</strong>أول اختبار: ${esc(fmtDay(q.next))} الساعة 4 العصر.</div>`}`}
+function quizView(x){
+  return `<button class="back" data-back>${ic("chev")}رجوع</button>
+  <div class="sect"><h2>اختبار ${esc(fmtDay(x.day))}</h2><p class="lede">${x.took?`الدرجة: <b>${x.score} / 10</b> (${x.pct}%)`:"ما شاركتش في الاختبار ده — دي الأسئلة بالإجابات الصحيحة."}</p></div>
+  ${x.questions.map(q=>`<div class="qq ${q.pick?(q.ok?"ok":"no"):""}"><div class="chips"><span class="chip muted">السؤال ${q.n}</span>${q.level?`<span class="chip muted">${esc(q.level)}</span>`:""}${q.pick?`<span class="chip ${q.ok?"ok":"bad"}">${q.ok?"✓ صح":"✗ غلط"}</span>`:""}</div>
+    <div class="qt">${esc(q.q)}</div><div class="opts">${q.options.map(o=>`<div class="opt ${o===q.correct?"right":o===q.pick?"wrong":""}">${o===q.correct?"✓":o===q.pick?"✗":"•"} <span>${esc(o)}</span></div>`).join("")}</div>
+    ${q.exp?`<div class="exp">💡 ${esc(q.exp)}</div>`:""}${q.src?`<div class="exp">Source: ${esc(q.src)}</div>`:""}</div>`).join("")}`}
+
+/* المدير والمدرب */
+function staffHome(d){const k=d.kpi,act=d.trainees.filter(t=>t.status==="Active Trainee");
+  const att=[];act.forEach(t=>{const w=[];if(t.overdue)w.push("عدّى خطة الـ 24 يوم ("+t.pct+"%)");else if(t.expected!=null&&t.pct+15<t.expected)w.push("متأخر: "+t.pct+"% والمفروض حوالي "+t.expected+"%");
+    if(t.ack==="لم يُستلم")w.push("الإقرار لسه ما اتوقّعش");if(t.lastQuiz&&t.lastQuiz.pct==null)w.push("ما شاركش في آخر اختبار");if(w.length)att.push([t,w.join(" · "),w.length+(t.overdue?2:0)])});
+  att.sort((x,y)=>y[2]-x[2]);
+  const tile=(href,icon,b,s,cls="")=>`<a class="tile ${cls}" target="_blank" rel="noopener" href="${esc(href)}"><span class="ic">${ic(icon)}</span><b>${b}</b><span>${s}</span></a>`;
+  return `<section class="hero"><span class="eyebrow">${esc(S.user.roleName)}</span><h2>أهلاً ${esc(S.user.name)}</h2><p>الاختبار الأسبوعي الجاي: ${esc(fmtDay(d.quiz.next))} الساعة 4 العصر.</p></section>
+  <div class="kpis"><div class="kpi"><b class="num">${k.active}</b><span>Active Trainee</span></div><div class="kpi"><b class="num">${k.avg}%</b><span>متوسط التقدم</span></div>
+    <div class="kpi ${k.overdue?"warn":""}"><b class="num">${k.overdue}</b><span>متأخرين عن الـ 24 يوم</span></div><div class="kpi ${k.ackPending?"warn":""}"><b class="num">${k.ackPending}</b><span>إقرارات ما اتوقّعتش</span></div></div>
+  <section class="sect"><div class="sect-h"><h2>محتاج انتباهك</h2><button class="btn ghost sm" data-go="people">كل المتدربين</button></div>
+  ${att.length?`<div class="todo">${att.slice(0,8).map(([t,m])=>`<button class="task" data-trainee="${esc(t.key)}" style="text-align:start;font:inherit;color:inherit;cursor:pointer"><span class="ic">${ic("users")}</span><div><b>${esc(t.name)}</b><span class="note">${esc(m)}</span></div>${ic("chev")}</button>`).join("")}</div>`:`<div class="empty"><strong>كله تمام</strong>مفيش متدرب محتاج متابعة دلوقتي.</div>`}</section>
+  <section class="sect"><div class="sect-h"><h2>اختصارات</h2></div><div class="tiles">
+    ${tile(CONFIG.dashUrl,"dash","لوحة التحكم","الحالات والتعديل والحذف","primary")}
+    ${tile(CONFIG.dashUrl+"?do=share","share","مشاركة تقرير","مع المشرف")}
+    ${tile(CONFIG.dashUrl+"?do=exam","exam","اختبار التثبيت","100 سؤال PDF")}
+    <button class="tile" data-act="invite-open"><span class="ic">${ic("plus")}</span><b>متدرب جديد</b><span>دعوة بالإيميل والواتساب</span></button>
+    ${S.user.role==="admin"?`<button class="tile" data-go="users"><span class="ic">${ic("key")}</span><b>المدربين</b><span>إضافة · تعديل · إيقاف · حذف</span></button>`:""}
+    ${tile(CONFIG.sheetUrl,"sheet","شيت المتابعة","قاعدة البيانات والنتائج")}
+  </div><p class="note">لوحة التحكم والشيت بيفتحوا على حساب Google بتاع مدير المنصة. تغيير الحالة (Active / Fixed / Resigned) من لوحة التحكم.</p></section>`}
+function personRow(t){const st={"Active Trainee":"","Fixed Pharmacist":'<span class="chip ok">مثبت</span>',"Resigned":'<span class="chip muted">استقال</span>'}[t.status]||"";
+  return `<button class="person" data-trainee="${esc(t.key)}"><span class="av">${esc((t.name||"؟").trim()[0])}</span><span class="who2"><b>${esc(t.name)}</b>
+  <span class="track" aria-hidden="true"><i style="width:${t.pct}%"></i>${t.status==="Active Trainee"&&t.expected!=null?`<span class="expm" style="inset-inline-start:${t.expected}%"></span>`:""}</span>
+  <span class="chips">${st}${t.status==="Active Trainee"&&t.dayN!=null?`<span class="chip muted">يوم ${t.dayN}</span>`:""}${t.overdue?'<span class="chip bad">متأخر</span>':""}${t.quizAvg!=null?`<span class="chip muted">اختبارات ${t.quizAvg}%</span>`:""}${t.ack==="لم يُستلم"?'<span class="chip wait">الإقرار</span>':""}</span></span>
+  <span class="pc num">${t.pct}%</span></button>`}
+function peopleView(d){const f=S.filter,list=d.trainees.filter(t=>f==="all"||t.status===f).sort((a,b)=>(b.overdue-a.overdue)||(a.pct-b.pct));
+  const n=s=>d.trainees.filter(t=>s==="all"||t.status===s).length;
+  return `<div class="sect"><div class="sect-h"><h2>المتدربين</h2><button class="btn gold sm" data-act="invite-open">${ic("plus")}متدرب جديد</button></div><p class="lede">الشريط = التقدم في الـ Checklist، والخط الرفيع = المفروض يكون وصل فين في يومه من الخطة.</p></div>
+  ${formsBlock()}
+  <div class="fchips">${[["Active Trainee","Active"],["Fixed Pharmacist","Fixed"],["Resigned","Resigned"],["all","الكل"]].map(([v,l])=>`<button class="fchip" data-filter="${v}" aria-pressed="${f===v}">${l} <span class="num">${n(v)}</span></button>`).join("")}</div>
+  <div class="people">${list.length?list.map(personRow).join(""):`<div class="empty"><strong>مفيش متدربين هنا</strong></div>`}</div>`}
+function profileView(d){const t=d.trainee;
+  return `<button class="back" data-back>${ic("chev")}رجوع</button>
+  <section class="hero"><div class="me"><div><span class="eyebrow">${esc(t.status)}${t.dayN!=null&&t.status==="Active Trainee"?" · اليوم "+t.dayN+" من "+t.planDays:""}</span><h2>${esc(t.name)}</h2>
+    <p class="ltr" style="text-align:right">${esc(t.emp||"—")} · ${esc(t.phone)}</p><div class="chips">${t.expected!=null&&t.status==="Active Trainee"?`<span class="chip ${t.pct>=t.expected?"ok":"bad"}">المفروض حوالي ${t.expected}%</span>`:""}<span class="chip navy">الإقرار: ${esc(t.ack)}</span></div></div>${ring(t.pct,"من الخطة")}</div></section>
+  <section class="card sect"><div class="sect-h"><h3>التقدم في الأقسام</h3><span class="note">${t.n} من ${t.total} بند</span></div>${secBars(d.sections)}</section>
+  ${quizzesView(d,t.key)}
+  ${S.user.role==="admin"?`<section class="card sect danger-zone"><h3>إدارة</h3><p class="note">الحذف بيشيل المتدرب من قاعدة البيانات والتقدم وحسابه في التطبيق. ردود النماذج ونتائج الاختبارات بتفضل في الشيت.</p>
+    <div class="actions"><button class="btn danger sm" data-act="del-trainee" data-key="${esc(t.key)}" data-name="${esc(t.name)}">${ic("trash")}حذف المتدرب</button></div></section>`:""}`}
+
+/* ===== المستخدمين (مدير المنصة) ===== */
+function field(id,label,val,attrs=""){return `<div class="field"><label for="${id}">${label}</label><input id="${id}" value="${esc(val||"")}" ${attrs}></div>`}
+function formsBlock(){let h="";
+  if(S.result)h+=`<div class="card sect result" role="status"><b>${S.result.title}</b><p class="note">${S.result.text}</p><div class="actions">${S.result.wa?`<a class="btn wa sm" target="_blank" rel="noopener" href="${esc(S.result.wa)}">${ic("wa")}ابعت على واتساب</a>`:""}${S.result.copy?`<button class="btn ghost sm" data-act="copy" data-text="${esc(S.result.copy)}">نسخ الرابط</button>`:""}<button class="btn ghost sm" data-act="result-close">تمام</button></div></div>`;
+  const F=S.form;if(!F)return h;
+  const err=S.formErr?`<div class="err" role="alert">${esc(S.formErr)}</div>`:"";
+  const btn=`<button class="btn gold" type="submit" ${S.busy?"disabled":""}>${S.busy?'<span class="spinner"></span>':"حفظ"}</button>`;
+  if(F.kind==="invite")h+=`<form class="card sect aform" id="f-invite"><h3>دعوة متدرب جديد</h3><p class="note">هيوصله رابط التسجيل ورقم جواله مكتوب فيه. بعد ما يسجّل بيوصله تلقائياً ملفات التدريب ورابط الـ Checklist، ويقدر يدخل التطبيق برقمه الوظيفي.</p>
+    ${field("i-name","الاسم",F.name,'required autocomplete="off"')}${field("i-phone","رقم الجوال",F.phone,'inputmode="numeric" dir="ltr" placeholder="05xxxxxxxx" required')}${field("i-email","الإيميل (اختياري — من غيره الدعوة على الواتساب بس)",F.email,'type="email" dir="ltr" autocomplete="off"')}
+    ${err}<div class="actions">${btn.replace("حفظ","ابعت الدعوة")}<button class="btn ghost" type="button" data-act="form-close">إلغاء</button></div></form>`;
+  if(F.kind==="trainer")h+=`<form class="card sect aform" id="f-trainer"><h3>${F.isNew?"مدرب جديد":"تعديل بيانات المدرب"}</h3>
+    ${field("t-uid","كود المدرب (رقم المستخدم اللي هيدخل بيه)",F.uid,`inputmode="numeric" dir="ltr" placeholder="مثلاً 201" required ${F.isNew?"":"disabled"}`)}${field("t-name","الاسم",F.name,'required autocomplete="off"')}
+    ${field("t-phone","رقم الجوال (للواتساب)",F.phone,'inputmode="numeric" dir="ltr" placeholder="05xxxxxxxx"')}${field("t-email","الإيميل (عليه بيوصل كود الدخول)",F.email,'type="email" dir="ltr" required autocomplete="off"')}
+    ${F.isNew?`<label class="check"><input type="checkbox" id="t-notify" checked> ابعتله إيميل ترحيب فيه الكود وطريقة الدخول</label>`:""}
+    ${err}<div class="actions">${btn}<button class="btn ghost" type="button" data-act="form-close">إلغاء</button></div></form>`;
+  return h}
+function userCard(u){const me=u.uid==="1";
+  const chips=[u.state==="موقوف"?'<span class="chip bad">موقوف</span>':"",u.locked?'<span class="chip bad">مقفول مؤقتاً</span>':"",!u.hasPin&&!me?'<span class="chip wait">لسه ما دخلش</span>':"",u.last?`<span class="chip muted">آخر دخول <bdi class="ltr">${esc(u.last)}</bdi></span>`:""].join("");
+  const acts=me?"":[u.role==="trainer"?`<button class="btn ghost sm" data-act="trainer-edit" data-uid="${esc(u.uid)}">${ic("edit")}تعديل</button>`:"",
+    `<button class="btn ghost sm" data-act="state" data-uid="${esc(u.uid)}" data-state="${u.state==="موقوف"?"نشط":"موقوف"}">${ic(u.state==="موقوف"?"check":"pause")}${u.state==="موقوف"?"تفعيل":"إيقاف"}</button>`,
+    u.hasPin?`<button class="btn ghost sm" data-act="reset" data-uid="${esc(u.uid)}">${ic("key")}تصفير الـ PIN</button>`:"",
+    u.role==="trainer"?`<button class="btn danger sm" data-act="del-trainer" data-uid="${esc(u.uid)}" data-name="${esc(u.name)}">${ic("trash")}حذف</button>`:""].join("");
+  return `<div class="ucard ${u.state==="موقوف"?"off":""}"><div class="uhead"><span class="av">${esc((u.name||"؟").replace(/^(د\.|Dr\.?)\s*/i,"").trim()[0]||"؟")}</span><div class="who2"><b>${esc(u.name)}</b>
+    <span class="note">رقم المستخدم <bdi class="ltr num"><b>${esc(u.uid)}</b></bdi>${u.phone&&u.phone!==u.uid?` · <bdi class="ltr">${esc(u.phone)}</bdi>`:""}</span>${u.email?`<span class="note"><bdi class="ltr">${esc(u.email)}</bdi></span>`:""}</div></div>
+    ${chips?`<div class="chips">${chips}</div>`:""}${acts?`<div class="actions">${acts}</div>`:""}</div>`}
+function usersView(d){S.usersCache=d.users;const g=r=>d.users.filter(u=>u.role===r);const tr=g("trainer"),ts=g("trainee");
+  return `<div class="sect"><div class="sect-h"><h2>المستخدمين</h2><button class="btn gold sm" data-act="trainer-new">${ic("plus")}مدرب جديد</button></div>
+  <p class="lede">المدرب بيشوف كل المتدربين وتقدمهم واختباراتهم، وبيبعت دعوات للمتدربين الجداد. إدارة المستخدمين وحذف المتدربين ليك إنت بس.</p></div>
+  ${formsBlock()}
+  <section class="sect"><div class="sect-h"><h3>المدربين <span class="note num">(${tr.length})</span></h3></div>
+  ${tr.length?`<div class="ulist">${tr.map(userCard).join("")}</div>`:`<div class="empty"><strong>لسه مفيش مدربين</strong>اضغط «مدرب جديد»، اختار له كود، واكتب اسمه وجواله وإيميله.</div>`}</section>
+  <section class="sect"><div class="sect-h"><h3>حسابات المتدربين في التطبيق <span class="note num">(${ts.length})</span></h3></div>
+  <p class="note">حساب المتدرب بيتعمل لوحده أول ما يدخل برقمه الوظيفي أو جواله.</p>
+  ${ts.length?`<div class="ulist">${ts.map(userCard).join("")}</div>`:`<div class="empty"><strong>لسه محدش من المتدربين دخل</strong></div>`}</section>
+  <section class="sect"><div class="sect-h"><h3>مدير المنصة</h3></div><div class="ulist">${g("admin").map(userCard).join("")}</div></section>`}
+
+async function act(btn,action,body,done){if(btn.dataset.busy)return;btn.dataset.busy=1;btn.disabled=true;
+  try{const j=await api(action,body);S.cache={};await done(j)}catch(e){toast(e.message)}finally{delete btn.dataset.busy;btn.disabled=false}}
+function arm(btn,label){if(btn.dataset.armed)return true;btn.dataset.armed=1;const old=btn.innerHTML;btn.innerHTML=label;btn.classList.add("armed");
+  setTimeout(()=>{if(btn.isConnected){delete btn.dataset.armed;btn.innerHTML=old;btn.classList.remove("armed")}},4000);return false}
+async function onAct(b){const a=b.dataset.act,uid=b.dataset.uid;
+  if(a==="invite-open"){S.form={kind:"invite"};S.formErr="";S.result=null;if(S.tab!=="people"||S.sub){S.tab="people";S.sub=null;renderApp()}else draw();window.scrollTo(0,0);return}
+  if(a==="trainer-new"){S.form={kind:"trainer",isNew:true};S.formErr="";S.result=null;draw();window.scrollTo(0,0);return}
+  if(a==="trainer-edit"){const u=(S.usersCache||[]).find(x=>x.uid===uid);S.form=Object.assign({kind:"trainer",isNew:false},u);S.formErr="";S.result=null;draw();window.scrollTo(0,0);return}
+  if(a==="form-close"){S.form=null;S.formErr="";draw();return}
+  if(a==="copy"){const t=b.dataset.text;try{await navigator.clipboard.writeText(t);toast("الرابط اتنسخ")}catch(e){toast("ما قدرتش أنسخ — الرابط في إيميل الدعوة")}return}
+  if(a==="result-close"){S.result=null;draw();return}
+  if(a==="state")return act(b,"users.state",{uid,state:b.dataset.state},async j=>{toast(b.dataset.state==="موقوف"?"الحساب اتوقف":"الحساب اتفعّل");await draw(true)});
+  if(a==="reset"){if(!arm(b,"اضغط تاني للتأكيد"))return;return act(b,"users.resetPin",{uid},async()=>{toast("الـ PIN اتصفّر. هيختار واحد جديد بكود الإيميل.");await draw(true)})}
+  if(a==="del-trainer"){if(!arm(b,"تأكيد حذف "+esc(b.dataset.name)+"؟"))return;return act(b,"users.delete",{uid},async()=>{toast("المدرب اتحذف");await draw(true)})}
+  if(a==="del-trainee"){if(!arm(b,"تأكيد حذف "+esc(b.dataset.name)+"؟"))return;return act(b,"trainee.delete",{key:b.dataset.key},async j=>{toast("اتحذف: "+j.deleted);S.sub=null;S.tab="people";renderApp()})}
+}
+document.addEventListener("submit",e=>{const id=e.target.id;if(id!=="f-invite"&&id!=="f-trainer")return;e.preventDefault();if(S.busy)return;
+  const val=k=>{const el=document.getElementById(k);return el?el.value.trim():""};
+  if(id==="f-invite"){const body={name:val("i-name"),phone:val("i-phone"),email:val("i-email")};S.form=Object.assign({kind:"invite"},body);
+    formStep("trainee.invite",body,j=>({title:"✅ الدعوة جاهزة لـ "+esc(body.name),text:(j.mailed?"اتبعتت على الإيميل. ":"")+"ابعتها كمان على الواتساب من الزرار، أو انسخ رابط التسجيل.",wa:j.wa,copy:j.link}))}
+  if(id==="f-trainer"){const F=S.form,n=document.getElementById("t-notify");const body={isNew:F.isNew,uid:F.isNew?val("t-uid"):F.uid,name:val("t-name"),phone:val("t-phone"),email:val("t-email"),notify:n?n.checked:false};Object.assign(S.form,body);
+    formStep("users.save",body,j=>F.isNew?{title:"✅ اتسجّل المدرب "+esc(j.user.name)+" — رقم المستخدم "+esc(j.user.uid),text:(j.mailed?"اتبعتله إيميل ترحيب فيه الكود وطريقة الدخول. ":"")+(j.wa?"ابعتله كمان على الواتساب من الزرار.":""),wa:j.wa}:{title:"✅ بيانات "+esc(j.user.name)+" اتحفظت",text:""})}
+});
+async function formStep(action,body,res){S.busy=true;S.formErr="";draw();
+  try{const j=await api(action,body);S.cache={};S.form=null;S.result=res(j)}catch(e){S.formErr=e.message}S.busy=false;await draw(true);window.scrollTo(0,0)}
+
+/* تحميل ملف من الـ API */
+async function getFile(id,btn){if(btn.dataset.busy)return;btn.dataset.busy=1;toast("بحمّل الملف…");
+  try{const j=await api("file",{id});const bin=atob(j.data),u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+    const url=URL.createObjectURL(new Blob([u8],{type:j.mime||"application/octet-stream"}));const a=document.createElement("a");a.href=url;a.download=j.name;a.rel="noopener";document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),60000);toast("اتحمّل: "+j.name)}
+  catch(e){toast(e.message)}finally{delete btn.dataset.busy}}
+
+/* ===== أحداث ===== */
+document.addEventListener("click",e=>{if(!S.user)return;
+  const tab=e.target.closest("[data-tab]");if(tab){S.tab=tab.dataset.tab;S.sub=null;S.form=null;S.result=null;renderApp();window.scrollTo(0,0);return}
+  const go=e.target.closest("[data-go]");if(go){S.tab=go.dataset.go;S.sub=null;S.form=null;S.result=null;renderApp();window.scrollTo(0,0);return}
+  if(e.target.closest("#logout")){logout();return}
+  if(e.target.closest("[data-retry]")){draw(true);return}
+  if(e.target.closest("[data-back]")){S.sub=S.sub&&S.sub.parent||null;draw();window.scrollTo(0,0);return}
+  const qz=e.target.closest("[data-quiz]");if(qz){S.sub={kind:"quiz",formId:qz.dataset.quiz,key:qz.dataset.key||"",parent:S.sub};draw();window.scrollTo(0,0);return}
+  const tr=e.target.closest("[data-trainee]");if(tr){S.sub={kind:"trainee",key:tr.dataset.trainee};draw();window.scrollTo(0,0);return}
+  const ab=e.target.closest("[data-act]");if(ab){onAct(ab);return}
+  const fb=e.target.closest("[data-file]");if(fb){getFile(fb.dataset.file,fb);return}
+  const fc=e.target.closest("[data-filter]");if(fc){S.filter=fc.dataset.filter;draw();return}
+  const c=e.target.closest(".cat[data-cat]");if(c){const i=+c.dataset.cat;S.cat=S.cat===i?-1:i;document.querySelectorAll(".cat").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.cat===S.cat));$("#mat-list").innerHTML=matList();return}
+});
+document.addEventListener("input",e=>{if(e.target.id==="mat-q"){S.q=e.target.value;$("#mat-list").innerHTML=matList()}});
+let pullY=null;document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible"&&S.user&&!S.sub&&!S.form&&!S.result){S.cache={};draw()}});
+
+/* ===== تشغيل ===== */
+(function boot(){
+  const t=store.get("j3-token"),u=store.get("j3-user");
+  if(t&&u){try{S.token=t;S.user=JSON.parse(u);renderApp();return}catch(e){}}
+  renderLogin();
+})();
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+</script>
+</body>
+</html>

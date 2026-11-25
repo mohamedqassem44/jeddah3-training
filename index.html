@@ -306,6 +306,36 @@ button.dl{border:0;cursor:pointer}
 .btn.armed{background:var(--bad);color:#fff}
 .danger-zone{display:grid;gap:8px}
 button.tile{font:inherit;color:inherit;text-align:start;cursor:pointer;border:1px solid var(--line)}
+.sub2{font-size:.8rem;color:var(--on-navy-2);margin-top:2px}
+.docs{display:grid;gap:12px}
+.doc{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:10px;background:var(--bg)}
+.doc-h{display:flex;gap:10px;align-items:center}.doc-h>div{flex:1;min-width:0;display:grid;gap:4px;justify-items:start}.doc-h b{font:600 .92rem var(--f-display)}
+.doc-h .ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--accent-soft);color:var(--icon-fg);flex:none}
+.upbtn{cursor:pointer;white-space:nowrap}.upbtn.busy{opacity:.6;pointer-events:none}
+.dlist{display:grid;gap:6px}.drow{display:flex;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 10px}
+.drow .linkish{font-size:.86rem}.dl.del{color:var(--bad)}
+.viewer{position:fixed;inset:0;z-index:60;background:rgb(10 10 30/.82);display:grid;grid-template-rows:auto 1fr;padding:calc(env(safe-area-inset-top,0px) + 10px) max(10px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 10px) max(10px,env(safe-area-inset-left,0px));gap:10px}
+.vbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--surface);border-radius:12px;padding:8px 10px}.vbar b{flex:1;min-width:0;font-size:.85rem;overflow-wrap:anywhere}
+.vbody{min-height:0;display:grid;place-items:center;overflow:auto}.vbody img{max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;background:#fff}
+.vbody iframe{width:100%;height:100%;border:0;border-radius:8px;background:#fff}
+.seg{display:flex;flex-wrap:wrap;gap:6px}.segb{border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 14px;font:600 .86rem var(--f-body);color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.segb[aria-pressed="true"],.segb:has(input:checked){background:var(--navy);border-color:var(--navy);color:#fff}.segb input{accent-color:var(--gold)}
+.stbox{display:grid;gap:8px}
+.chartwrap{overflow-x:auto;direction:ltr}.track-chart{width:100%;min-width:480px;height:auto;direction:rtl}
+.track-chart .gd{stroke:var(--line)}.track-chart .ax{font:500 11px var(--f-body);fill:var(--muted)}
+.track-chart .band{fill:var(--ok);opacity:.07}.track-chart .expl{fill:none;stroke:var(--ink);stroke-width:1.5;stroke-dasharray:5 4;opacity:.6}
+.track-chart .pend{stroke:var(--gold-deep);stroke-width:1.5;stroke-dasharray:3 3}
+.track-chart .pt{cursor:pointer}.track-chart .pt circle{stroke:var(--surface);stroke-width:2.5}.track-chart .pt.ok circle{fill:var(--ok)}.track-chart .pt.late circle{fill:var(--bad)}
+.track-chart .pt text{font:600 11px var(--f-body);fill:var(--ink)}
+.legend2{display:flex;flex-wrap:wrap;gap:14px;font-size:.8rem;color:var(--muted)}.legend2 span{display:inline-flex;gap:6px;align-items:center}
+.legend2 .dot{width:10px;height:10px;border-radius:50%;display:inline-block}.legend2 .dot.ok{background:var(--ok)}.legend2 .dot.late{background:var(--bad)}.legend2 .ln{width:18px;border-top:2px dashed var(--ink);opacity:.6}
+.tablewrap{overflow-x:auto;margin:-4px}.rtable{width:100%;border-collapse:collapse;font-size:.82rem;min-width:860px}
+.rtable th{background:var(--navy);color:#fff;font-weight:600;padding:8px;text-align:start;white-space:nowrap}.rtable td{padding:8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.rtable tbody tr{cursor:pointer}.rtable tbody tr:hover{background:var(--sunk)}.rtable .bad{color:var(--bad);font-weight:600}.rtable .okc{color:var(--ok)}
+.cell-bar{display:inline-block;width:48px;height:6px;border-radius:99px;background:var(--sunk);margin-inline-end:6px;vertical-align:middle;overflow:hidden}.cell-bar i{display:block;height:100%;background:var(--gold-deep)}.cell-bar i.late{background:var(--bad)}
+@media print{.top,.tabs,nav,.foot,.noprint,.toast,#off,.viewer{display:none!important}body{background:#fff!important;color:#000}main.wrap{max-width:none!important;padding:0!important}
+  .card,.kpi{box-shadow:none!important;border-color:#ccc!important;break-inside:avoid}.rtable{min-width:0;font-size:9pt}.rtable th{background:#2C2A6E!important;color:#fff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .chartwrap{overflow:visible}.track-chart{min-width:0}@page{size:A4 landscape;margin:12mm}}
 .person .pc{font:700 1rem var(--f-display);text-align:center;min-width:46px}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .fchips{display:flex;gap:6px;flex-wrap:wrap}
@@ -346,7 +376,7 @@ button.tile{font:inherit;color:inherit;text-align:start;cursor:pointer;border:1p
 document.documentElement.lang="ar";document.documentElement.dir="rtl";
 /* ===== الإعداد ===== */
 const API_URL="https://script.google.com/macros/s/AKfycbwBa6a4GSJ2ByCvcvQG8teZKMdTlaesyoyM1rl0rRfkCXhEivPZQDO8HBwqbQCoBCN6/exec";   // رابط Web app بتاع مشروع «Jeddah3 App API»
-const VERSION="2.1";
+const VERSION="2.2";
 const CONFIG={
   managerName:"Dr. Qassem",
   sheetUrl:"https://docs.google.com/spreadsheets/d/1oj5nNc5cHt8Y47FrZ6u0qmxvis0ULIYDcy-SzzSMYZA/edit",
@@ -401,6 +431,9 @@ IC.key='<circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5"/><path d="m16 7 2
 IC.edit='<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>';
 IC.trash='<path d="M4 7h16"/><path d="M9 7V4.5h6V7"/><path d="M6.5 7l1 13h9l1-13"/>';
 IC.pause='<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
+IC.up='<path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v3a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 20 19v-3"/>';
+IC.eye='<path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/>';
+IC.lic='<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4"/><path d="M14.5 10h4M14.5 13.5h3"/>';
 IC.trend='<path d="M3.5 17.5 9 12l4 4 7.5-8"/><path d="M15 8h5.5v5.5"/>';
 const ic=(n,cls="i")=>`<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||""}</svg>`;
 
@@ -482,9 +515,12 @@ document.addEventListener("click",e=>{const t=e.target.closest("button");if(!t||
 function logout(expired){store.del("j3-token");store.del("j3-user");S.token=null;S.user=null;S.cache={};S.login={step:"id",uid:"",err:expired?"انتهت الجلسة. ادخل تاني.":""};renderLogin()}
 
 /* ===== الشاشات ===== */
-const isStaff=()=>S.user&&(S.user.role==="admin"||S.user.role==="trainer");
-function tabsFor(){return isStaff()
-  ?[["home","الرئيسية","home"],["people","المتدربين","users"]].concat(S.user.role==="admin"?[["users","المستخدمين","key"]]:[],[["materials","المواد","book"],["plan","الخطة","check"]])
+const isStaff=()=>S.user&&["admin","trainer","supervisor"].includes(S.user.role);
+const canEdit=()=>S.user&&(S.user.role==="admin"||S.user.role==="trainer");
+const isAdmin=()=>S.user&&S.user.role==="admin";
+function tabsFor(){const r=S.user.role;return isStaff()
+  ?[["home","الرئيسية","home"],["people","المتدربين","users"],["reports","التقارير","dash"]].concat(
+    r==="admin"?[["users","المستخدمين","key"],["materials","المواد","book"]]:r==="supervisor"?[["users","الفريق","key"],["plan","الخطة","check"]]:[["materials","المواد","book"],["plan","الخطة","check"]])
   :[["home","رحلتي","home"],["plan","الخطة","check"],["files","ملفاتي","book"],["quizzes","اختباراتي","quiz"]]}
 function renderApp(){
   const tabs=tabsFor();if(!tabs.find(t=>t[0]===S.tab))S.tab="home";
@@ -508,7 +544,8 @@ async function view(force){
   if(isStaff()){
     if(S.tab==="home")return staffHome(await load("staff","staff.home",{},force));
     if(S.tab==="people")return peopleView(await load("staff","staff.home",{},force));
-    if(S.tab==="users"&&S.user.role==="admin")return usersView(await load("users","users.list",{},force));
+    if(S.tab==="reports")return reportsView(await load("staff","staff.home",{},force));
+    if(S.tab==="users"&&(isAdmin()||S.user.role==="supervisor"))return usersView(await load("users","users.list",{},force));
     if(S.tab==="materials")return materialsView();
     if(S.tab==="plan")return planView(null);
   }
@@ -539,9 +576,11 @@ function homeView(d){const t=d.trainee;
   const status=t.status==="Active Trainee"?(t.dayN!=null?`اليوم ${t.dayN} من ${t.planDays}`:"في فترة التدريب"):t.status==="Fixed Pharmacist"?"صيدلي مثبت":"";
   const q=d.quiz,last=d.quizzes[0];
   const tasks=[];
+  const hasLic=(d.docs||[]).some(x=>x.type==="license");
   tasks.push(t.ack==="لم يُستلم"
-    ?{hot:1,icon:"sign",b:"وقّع إقرار التعهد (F HR-08)",s:"التوقيع من التطبيق جاي في التحديث الجاي. دلوقتي: افتح النموذج من «ملفاتي»، املاه ووقّعه، وابعته رد على إيميل ملفات التدريب.",a:`<button class="btn sm" data-go="files">${ic("book")}فتح النموذج</button>`}
+    ?{hot:1,icon:"sign",b:"ارفع إقرار التعهد <bdi>(F HR-08)</bdi>",s:"حمّل النموذج من «ملفاتي»، املاه ووقّعه، وصوّره أو امسحه PDF، وارفعه من نفس المكان.",a:`<button class="btn sm" data-go="files">${ic("up")}رفع الإقرار</button>`}
     :{done:1,icon:"check",b:"الإقرار",s:"حالته: "+t.ack});
+  if(!hasLic)tasks.push({icon:"lic",b:"ارفع صورة ترخيص مزاولة المهنة",s:"صورة واضحة للترخيص أو PDF، من «ملفاتي».",a:`<button class="btn ghost sm" data-go="files">${ic("up")}رفع الترخيص</button>`});
   if(t.status==="Active Trainee")tasks.push({icon:"check",b:"حدّث الـ Checklist",s:`علّمت على ${t.n} من ${t.total} بند. علّم على اللي خلّصته كل يوم.`,a:t.checklist?`<a class="btn sm" target="_blank" rel="noopener" href="${esc(t.checklist)}">${ic("ext")}فتح الـ Checklist</a>`:""});
   tasks.push(q.openNow?{hot:1,icon:"quiz",b:"الاختبار الأسبوعي مفتوح دلوقتي",s:"افتح إيميلك ودوس «ابدأ الاختبار». متاح لحد الساعة 5 بس."}
     :{icon:"cal",b:"الاختبار الأسبوعي الجاي",s:`${fmtDay(q.next)} الساعة 4:00 العصر · 10 أسئلة · ساعة واحدة`});
@@ -568,8 +607,11 @@ const dl=id=>`https://drive.google.com/uc?export=download&id=${encodeURIComponen
 const viewUrl=id=>`https://drive.google.com/file/d/${encodeURIComponent(id)}/view`;
 const folderUrl=id=>`https://drive.google.com/drive/folders/${encodeURIComponent(id)}`;
 function filesView(f){const me=S.cache.me&&S.cache.me.trainee;
-  return `<div class="sect"><h2>ملفاتي</h2><p class="lede">ملفات برنامج التدريب اللي وصلتك على الإيميل، ومكتبة المواد كاملة.</p></div>
-  <div class="files">${f.files.map(x=>`<div class="file"><span class="ft ${esc(x.ext.toLowerCase())}">${esc(x.ext||"FILE")}</span><button class="t linkish" data-file="${esc(x.id)}"><bdi>${esc(x.kind==="ack"?"نموذج إقرار وتعهد التدريب (F HR-08)":x.kind==="plan"?"خطة التدريب العملي":x.name.replace(/\.[a-z0-9]+$/i,""))}</bdi><span class="note num"><bdi class="ltr">${x.mb<0.1?"&lt; 0.1":x.mb} MB</bdi> · اضغط للتحميل</span></button>${x.kind==="ack"&&me?`<span class="chip ${me.ack==="لم يُستلم"?"wait":"ok"}">${esc(me.ack)}</span>`:""}<button class="dl" data-file="${esc(x.id)}" aria-label="تحميل">${ic("dl")}</button></div>`).join("")}</div>
+  const md=S.cache.me||{};
+  return `<div class="sect"><h2>ملفاتي</h2><p class="lede">مستنداتك اللي بترفعها، وملفات برنامج التدريب اللي وصلتك على الإيميل، ومكتبة المواد كاملة.</p></div>
+  ${docsBlock(md.docs||[],null,me?me.ack:"",true,false)}
+  <div class="sect-h"><h3>ملفات برنامج التدريب</h3></div>
+  <div class="files">${f.files.map(x=>`<div class="file"><span class="ft ${esc(x.ext.toLowerCase())}">${esc(x.ext||"FILE")}</span><button class="t linkish" data-file="${esc(x.id)}"><bdi>${esc(x.kind==="ack"?"نموذج إقرار وتعهد التدريب — F HR-08":x.kind==="plan"?"خطة التدريب العملي":x.name.replace(/\.[a-z0-9]+$/i,""))}</bdi><span class="note num"><bdi class="ltr">${x.mb<0.1?"&lt; 0.1":x.mb} MB</bdi> · اضغط للتحميل</span></button>${x.kind==="ack"&&me?`<span class="chip ${me.ack==="لم يُستلم"?"wait":"ok"}">${esc(me.ack)}</span>`:""}<button class="dl" data-file="${esc(x.id)}" aria-label="تحميل">${ic("dl")}</button></div>`).join("")}</div>
   ${materialsView(true)}`}
 function fileRow(x){return `<div class="file"><span class="ft ${x.ext.toLowerCase()}">${esc(x.ext)}</span><a class="t" target="_blank" rel="noopener" href="${esc(viewUrl(x.id))}"><bdi>${esc(x.title)}${CONFIG.newIds.includes(x.id)?'<span class="badge-new">جديد</span>':""}</bdi><span class="note num"><bdi class="ltr">${x.mb<1?"&lt; 1":x.mb} MB</bdi></span></a><a class="dl" target="_blank" rel="noopener" href="${esc(dl(x.id))}" aria-label="تحميل ${esc(x.title)}">${ic("dl")}</a></div>`}
 function materialsView(inner){const m=CONFIG.materials;
@@ -602,6 +644,7 @@ function staffHome(d){const k=d.kpi,act=d.trainees.filter(t=>t.status==="Active 
   const att=[];act.forEach(t=>{const w=[];if(t.overdue)w.push("عدّى خطة الـ 24 يوم ("+t.pct+"%)");else if(t.expected!=null&&t.pct+15<t.expected)w.push("متأخر: "+t.pct+"% والمفروض حوالي "+t.expected+"%");
     if(t.ack==="لم يُستلم")w.push("الإقرار لسه ما اتوقّعش");if(t.lastQuiz&&t.lastQuiz.pct==null)w.push("ما شاركش في آخر اختبار");if(w.length)att.push([t,w.join(" · "),w.length+(t.overdue?2:0)])});
   att.sort((x,y)=>y[2]-x[2]);
+  const r=S.user.role;
   const tile=(href,icon,b,s,cls="")=>`<a class="tile ${cls}" target="_blank" rel="noopener" href="${esc(href)}"><span class="ic">${ic(icon)}</span><b>${b}</b><span>${s}</span></a>`;
   return `<section class="hero"><span class="eyebrow">${esc(S.user.roleName)}</span><h2>أهلاً ${esc(S.user.name)}</h2><p>الاختبار الأسبوعي الجاي: ${esc(fmtDay(d.quiz.next))} الساعة 4 العصر.</p></section>
   <div class="kpis"><div class="kpi"><b class="num">${k.active}</b><span>Active Trainee</span></div><div class="kpi"><b class="num">${k.avg}%</b><span>متوسط التقدم</span></div>
@@ -609,28 +652,32 @@ function staffHome(d){const k=d.kpi,act=d.trainees.filter(t=>t.status==="Active 
   <section class="sect"><div class="sect-h"><h2>محتاج انتباهك</h2><button class="btn ghost sm" data-go="people">كل المتدربين</button></div>
   ${att.length?`<div class="todo">${att.slice(0,8).map(([t,m])=>`<button class="task" data-trainee="${esc(t.key)}" style="text-align:start;font:inherit;color:inherit;cursor:pointer"><span class="ic">${ic("users")}</span><div><b>${esc(t.name)}</b><span class="note">${esc(m)}</span></div>${ic("chev")}</button>`).join("")}</div>`:`<div class="empty"><strong>كله تمام</strong>مفيش متدرب محتاج متابعة دلوقتي.</div>`}</section>
   <section class="sect"><div class="sect-h"><h2>اختصارات</h2></div><div class="tiles">
-    ${tile(CONFIG.dashUrl,"dash","لوحة التحكم","الحالات والتعديل والحذف","primary")}
-    ${tile(CONFIG.dashUrl+"?do=share","share","مشاركة تقرير","مع المشرف")}
-    ${tile(CONFIG.dashUrl+"?do=exam","exam","اختبار التثبيت","100 سؤال PDF")}
-    <button class="tile" data-act="invite-open"><span class="ic">${ic("plus")}</span><b>متدرب جديد</b><span>دعوة بالإيميل والواتساب</span></button>
-    ${S.user.role==="admin"?`<button class="tile" data-go="users"><span class="ic">${ic("key")}</span><b>المدربين</b><span>إضافة · تعديل · إيقاف · حذف</span></button>`:""}
-    ${tile(CONFIG.sheetUrl,"sheet","شيت المتابعة","قاعدة البيانات والنتائج")}
-  </div><p class="note">لوحة التحكم والشيت بيفتحوا على حساب Google بتاع مدير المنصة. تغيير الحالة (Active / Fixed / Resigned) من لوحة التحكم.</p></section>`}
+    <button class="tile primary" data-go="reports"><span class="ic">${ic("dash")}</span><b>التقارير</b><span>على المسار؟ · جدول كامل · PDF و Excel</span></button>
+    ${canEdit()?`<button class="tile" data-act="invite-open"><span class="ic">${ic("plus")}</span><b>متدرب جديد</b><span>دعوة بالإيميل والواتساب</span></button>`:""}
+    ${r==="admin"?`<button class="tile" data-go="users"><span class="ic">${ic("key")}</span><b>المستخدمين</b><span>مدربين ومشرفين: إضافة · إيقاف · حذف</span></button>`:""}
+    ${r==="supervisor"?`<button class="tile" data-go="users"><span class="ic">${ic("key")}</span><b>فريق التدريب</b><span>المدربين والمشرفين</span></button>`:""}
+    ${r==="admin"?tile(CONFIG.dashUrl+"?do=exam","exam","اختبار التثبيت","100 سؤال PDF"):""}
+    ${r==="admin"?tile(CONFIG.dashUrl,"share","لوحة التحكم","تقرير الإيميل والواتساب"):""}
+    ${r==="admin"?tile(CONFIG.sheetUrl,"sheet","شيت المتابعة","قاعدة البيانات والنتائج"):""}
+  </div>${r==="admin"?`<p class="note">لوحة التحكم والشيت بيفتحوا على حساب Google بتاعك بس.</p>`:""}</section>`}
 function personRow(t){const st={"Active Trainee":"","Fixed Pharmacist":'<span class="chip ok">مثبت</span>',"Resigned":'<span class="chip muted">استقال</span>'}[t.status]||"";
   return `<button class="person" data-trainee="${esc(t.key)}"><span class="av">${esc((t.name||"؟").trim()[0])}</span><span class="who2"><b>${esc(t.name)}</b>
   <span class="track" aria-hidden="true"><i style="width:${t.pct}%"></i>${t.status==="Active Trainee"&&t.expected!=null?`<span class="expm" style="inset-inline-start:${t.expected}%"></span>`:""}</span>
-  <span class="chips">${st}${t.status==="Active Trainee"&&t.dayN!=null?`<span class="chip muted">يوم ${t.dayN}</span>`:""}${t.overdue?'<span class="chip bad">متأخر</span>':""}${t.quizAvg!=null?`<span class="chip muted">اختبارات ${t.quizAvg}%</span>`:""}${t.ack==="لم يُستلم"?'<span class="chip wait">الإقرار</span>':""}</span></span>
+  <span class="chips">${st}${t.status==="Active Trainee"&&t.dayN!=null?`<span class="chip muted">يوم ${t.dayN}</span>`:""}${t.overdue?'<span class="chip bad">متأخر</span>':""}${t.quizAvg!=null?`<span class="chip muted">اختبارات ${t.quizAvg}%</span>`:""}${t.ack==="لم يُستلم"?'<span class="chip wait">الإقرار</span>':""}${t.docs&&!t.docs.license&&t.status==="Active Trainee"?'<span class="chip wait">الترخيص</span>':""}</span></span>
   <span class="pc num">${t.pct}%</span></button>`}
 function peopleView(d){const f=S.filter,list=d.trainees.filter(t=>f==="all"||t.status===f).sort((a,b)=>(b.overdue-a.overdue)||(a.pct-b.pct));
   const n=s=>d.trainees.filter(t=>s==="all"||t.status===s).length;
-  return `<div class="sect"><div class="sect-h"><h2>المتدربين</h2><button class="btn gold sm" data-act="invite-open">${ic("plus")}متدرب جديد</button></div><p class="lede">الشريط = التقدم في الـ Checklist، والخط الرفيع = المفروض يكون وصل فين في يومه من الخطة.</p></div>
+  return `<div class="sect"><div class="sect-h"><h2>المتدربين</h2>${canEdit()?`<button class="btn gold sm" data-act="invite-open">${ic("plus")}متدرب جديد</button>`:""}</div><p class="lede">الشريط = التقدم في الـ Checklist، والخط الرفيع = المفروض يكون وصل فين في يومه من الخطة.</p></div>
   ${formsBlock()}
   <div class="fchips">${[["Active Trainee","Active"],["Fixed Pharmacist","Fixed"],["Resigned","Resigned"],["all","الكل"]].map(([v,l])=>`<button class="fchip" data-filter="${v}" aria-pressed="${f===v}">${l} <span class="num">${n(v)}</span></button>`).join("")}</div>
   <div class="people">${list.length?list.map(personRow).join(""):`<div class="empty"><strong>مفيش متدربين هنا</strong></div>`}</div>`}
 function profileView(d){const t=d.trainee;
   return `<button class="back" data-back>${ic("chev")}رجوع</button>
   <section class="hero"><div class="me"><div><span class="eyebrow">${esc(t.status)}${t.dayN!=null&&t.status==="Active Trainee"?" · اليوم "+t.dayN+" من "+t.planDays:""}</span><h2>${esc(t.name)}</h2>
-    <p class="ltr" style="text-align:right">${esc(t.emp||"—")} · ${esc(t.phone)}</p><div class="chips">${t.expected!=null&&t.status==="Active Trainee"?`<span class="chip ${t.pct>=t.expected?"ok":"bad"}">المفروض حوالي ${t.expected}%</span>`:""}<span class="chip navy">الإقرار: ${esc(t.ack)}</span></div></div>${ring(t.pct,"من الخطة")}</div></section>
+    <p><bdi class="ltr">${esc(t.emp||"—")}</bdi> · <bdi class="ltr">${esc(t.phone)}</bdi>${t.email?` · <bdi class="ltr">${esc(t.email)}</bdi>`:""}</p>
+    <p class="sub2">بداية التدريب: ${esc(fmtShort(t.start))}${t.end?" · الانتهاء: "+esc(fmtShort(t.end)):""}</p><div class="chips">${t.expected!=null&&t.status==="Active Trainee"?`<span class="chip ${t.pct>=t.expected?"ok":"bad"}">المفروض حوالي ${t.expected}%</span>`:""}<span class="chip navy">الإقرار: ${esc(t.ack)}</span></div></div>${ring(t.pct,"من الخطة")}</div></section>
+  ${canEdit()?`<section class="card sect stbox"><h3>الحالة</h3><div class="seg" role="group" aria-label="حالة المتدرب">${[["Active Trainee","Active"],["Fixed Pharmacist","Fixed"],["Resigned","Resigned"]].map(([v,l])=>`<button class="segb" data-act="status" data-key="${esc(t.key)}" data-status="${v}" aria-pressed="${t.status===v}">${l}</button>`).join("")}</div><p class="note">Fixed و Resigned بيسجّلوا تاريخ النهارده كتاريخ انتهاء، والرجوع لـ Active بيمسحه.</p></section>`:""}
+  ${docsBlock(d.docs||[],t.key,t.ack,canEdit(),isAdmin())}
   <section class="card sect"><div class="sect-h"><h3>التقدم في الأقسام</h3><span class="note">${t.n} من ${t.total} بند</span></div>${secBars(d.sections)}</section>
   ${quizzesView(d,t.key)}
   ${S.user.role==="admin"?`<section class="card sect danger-zone"><h3>إدارة</h3><p class="note">الحذف بيشيل المتدرب من قاعدة البيانات والتقدم وحسابه في التطبيق. ردود النماذج ونتائج الاختبارات بتفضل في الشيت.</p>
@@ -646,30 +693,34 @@ function formsBlock(){let h="";
   if(F.kind==="invite")h+=`<form class="card sect aform" id="f-invite"><h3>دعوة متدرب جديد</h3><p class="note">هيوصله رابط التسجيل ورقم جواله مكتوب فيه. بعد ما يسجّل بيوصله تلقائياً ملفات التدريب ورابط الـ Checklist، ويقدر يدخل التطبيق برقمه الوظيفي.</p>
     ${field("i-name","الاسم",F.name,'required autocomplete="off"')}${field("i-phone","رقم الجوال",F.phone,'inputmode="numeric" dir="ltr" placeholder="05xxxxxxxx" required')}${field("i-email","الإيميل (اختياري — من غيره الدعوة على الواتساب بس)",F.email,'type="email" dir="ltr" autocomplete="off"')}
     ${err}<div class="actions">${btn.replace("حفظ","ابعت الدعوة")}<button class="btn ghost" type="button" data-act="form-close">إلغاء</button></div></form>`;
-  if(F.kind==="trainer")h+=`<form class="card sect aform" id="f-trainer"><h3>${F.isNew?"مدرب جديد":"تعديل بيانات المدرب"}</h3>
-    ${field("t-uid","كود المدرب (رقم المستخدم اللي هيدخل بيه)",F.uid,`inputmode="numeric" dir="ltr" placeholder="مثلاً 201" required ${F.isNew?"":"disabled"}`)}${field("t-name","الاسم",F.name,'required autocomplete="off"')}
+  if(F.kind==="trainer")h+=`<form class="card sect aform" id="f-trainer"><h3>${F.isNew?"مستخدم جديد":"تعديل بيانات "+esc(F.name||"")}</h3>
+    <div class="field"><label>الدور</label><div class="seg">${[["trainer","مدرب"],["supervisor","مشرف"]].map(([v,l])=>`<label class="segb"><input type="radio" name="t-role" value="${v}" ${(F.role||"trainer")===v?"checked":""}> ${l}</label>`).join("")}</div>
+      <span class="note">المدرب: يتابع المتدربين ويرفع مستنداتهم ويغيّر حالتهم ويبعت دعوات. المشرف: يشوف كل حاجة (المتدربين، المستندات، التقارير، الفريق) من غير تعديل.</span></div>
+    ${field("t-uid","الكود (رقم المستخدم اللي هيدخل بيه)",F.uid,`inputmode="numeric" dir="ltr" placeholder="مثلاً 201" required ${F.isNew?"":"disabled"}`)}${field("t-name","الاسم",F.name,'required autocomplete="off"')}
     ${field("t-phone","رقم الجوال (للواتساب)",F.phone,'inputmode="numeric" dir="ltr" placeholder="05xxxxxxxx"')}${field("t-email","الإيميل (عليه بيوصل كود الدخول)",F.email,'type="email" dir="ltr" required autocomplete="off"')}
     ${F.isNew?`<label class="check"><input type="checkbox" id="t-notify" checked> ابعتله إيميل ترحيب فيه الكود وطريقة الدخول</label>`:""}
     ${err}<div class="actions">${btn}<button class="btn ghost" type="button" data-act="form-close">إلغاء</button></div></form>`;
   return h}
-function userCard(u){const me=u.uid==="1";
+function userCard(u){const me=u.uid==="1"||!isAdmin();
   const chips=[u.state==="موقوف"?'<span class="chip bad">موقوف</span>':"",u.locked?'<span class="chip bad">مقفول مؤقتاً</span>':"",!u.hasPin&&!me?'<span class="chip wait">لسه ما دخلش</span>':"",u.last?`<span class="chip muted">آخر دخول <bdi class="ltr">${esc(u.last)}</bdi></span>`:""].join("");
-  const acts=me?"":[u.role==="trainer"?`<button class="btn ghost sm" data-act="trainer-edit" data-uid="${esc(u.uid)}">${ic("edit")}تعديل</button>`:"",
+  const staffRole=u.role==="trainer"||u.role==="supervisor";
+  const acts=me?"":[staffRole?`<button class="btn ghost sm" data-act="trainer-edit" data-uid="${esc(u.uid)}">${ic("edit")}تعديل</button>`:"",
     `<button class="btn ghost sm" data-act="state" data-uid="${esc(u.uid)}" data-state="${u.state==="موقوف"?"نشط":"موقوف"}">${ic(u.state==="موقوف"?"check":"pause")}${u.state==="موقوف"?"تفعيل":"إيقاف"}</button>`,
     u.hasPin?`<button class="btn ghost sm" data-act="reset" data-uid="${esc(u.uid)}">${ic("key")}تصفير الـ PIN</button>`:"",
-    u.role==="trainer"?`<button class="btn danger sm" data-act="del-trainer" data-uid="${esc(u.uid)}" data-name="${esc(u.name)}">${ic("trash")}حذف</button>`:""].join("");
+    staffRole?`<button class="btn danger sm" data-act="del-trainer" data-uid="${esc(u.uid)}" data-name="${esc(u.name)}">${ic("trash")}حذف</button>`:""].join("");
   return `<div class="ucard ${u.state==="موقوف"?"off":""}"><div class="uhead"><span class="av">${esc((u.name||"؟").replace(/^(د\.|Dr\.?)\s*/i,"").trim()[0]||"؟")}</span><div class="who2"><b>${esc(u.name)}</b>
     <span class="note">رقم المستخدم <bdi class="ltr num"><b>${esc(u.uid)}</b></bdi>${u.phone&&u.phone!==u.uid?` · <bdi class="ltr">${esc(u.phone)}</bdi>`:""}</span>${u.email?`<span class="note"><bdi class="ltr">${esc(u.email)}</bdi></span>`:""}</div></div>
     ${chips?`<div class="chips">${chips}</div>`:""}${acts?`<div class="actions">${acts}</div>`:""}</div>`}
-function usersView(d){S.usersCache=d.users;const g=r=>d.users.filter(u=>u.role===r);const tr=g("trainer"),ts=g("trainee");
-  return `<div class="sect"><div class="sect-h"><h2>المستخدمين</h2><button class="btn gold sm" data-act="trainer-new">${ic("plus")}مدرب جديد</button></div>
-  <p class="lede">المدرب بيشوف كل المتدربين وتقدمهم واختباراتهم، وبيبعت دعوات للمتدربين الجداد. إدارة المستخدمين وحذف المتدربين ليك إنت بس.</p></div>
-  ${formsBlock()}
-  <section class="sect"><div class="sect-h"><h3>المدربين <span class="note num">(${tr.length})</span></h3></div>
-  ${tr.length?`<div class="ulist">${tr.map(userCard).join("")}</div>`:`<div class="empty"><strong>لسه مفيش مدربين</strong>اضغط «مدرب جديد»، اختار له كود، واكتب اسمه وجواله وإيميله.</div>`}</section>
-  <section class="sect"><div class="sect-h"><h3>حسابات المتدربين في التطبيق <span class="note num">(${ts.length})</span></h3></div>
+function usersView(d){S.usersCache=d.users;const g=r=>d.users.filter(u=>u.role===r);const tr=g("trainer"),sv=g("supervisor"),ts=g("trainee"),A=isAdmin();
+  const sec=(title,list,empty)=>`<section class="sect"><div class="sect-h"><h3>${title} <span class="note num">(${list.length})</span></h3></div>${list.length?`<div class="ulist">${list.map(userCard).join("")}</div>`:`<div class="empty">${empty}</div>`}</section>`;
+  return `<div class="sect"><div class="sect-h"><h2>${A?"المستخدمين":"فريق التدريب"}</h2>${A?`<button class="btn gold sm" data-act="trainer-new">${ic("plus")}مستخدم جديد</button>`:""}</div>
+  <p class="lede">${A?"المدرب بيتابع المتدربين ويرفع مستنداتهم ويغيّر حالتهم ويبعت دعوات. المشرف بيشوف كل حاجة من غير تعديل. إدارة المستخدمين وحذف المتدربين والمستندات ليك إنت بس.":"مدير المنصة والمدربين والمشرفين في برنامج التدريب."}</p></div>
+  ${A?formsBlock():""}
+  ${sec("المشرفين",sv,A?"<strong>لسه مفيش مشرفين</strong>اضغط «مستخدم جديد» واختار «مشرف».":"<strong>مفيش</strong>")}
+  ${sec("المدربين",tr,A?"<strong>لسه مفيش مدربين</strong>اضغط «مستخدم جديد»، اختار له كود، واكتب اسمه وجواله وإيميله.":"<strong>لسه مفيش مدربين</strong>")}
+  ${A?`<section class="sect"><div class="sect-h"><h3>حسابات المتدربين في التطبيق <span class="note num">(${ts.length})</span></h3></div>
   <p class="note">حساب المتدرب بيتعمل لوحده أول ما يدخل برقمه الوظيفي أو جواله.</p>
-  ${ts.length?`<div class="ulist">${ts.map(userCard).join("")}</div>`:`<div class="empty"><strong>لسه محدش من المتدربين دخل</strong></div>`}</section>
+  ${ts.length?`<div class="ulist">${ts.map(userCard).join("")}</div>`:`<div class="empty"><strong>لسه محدش من المتدربين دخل</strong></div>`}</section>`:""}
   <section class="sect"><div class="sect-h"><h3>مدير المنصة</h3></div><div class="ulist">${g("admin").map(userCard).join("")}</div></section>`}
 
 async function act(btn,action,body,done){if(btn.dataset.busy)return;btn.dataset.busy=1;btn.disabled=true;
@@ -678,25 +729,106 @@ function arm(btn,label){if(btn.dataset.armed)return true;btn.dataset.armed=1;con
   setTimeout(()=>{if(btn.isConnected){delete btn.dataset.armed;btn.innerHTML=old;btn.classList.remove("armed")}},4000);return false}
 async function onAct(b){const a=b.dataset.act,uid=b.dataset.uid;
   if(a==="invite-open"){S.form={kind:"invite"};S.formErr="";S.result=null;if(S.tab!=="people"||S.sub){S.tab="people";S.sub=null;renderApp()}else draw();window.scrollTo(0,0);return}
-  if(a==="trainer-new"){S.form={kind:"trainer",isNew:true};S.formErr="";S.result=null;draw();window.scrollTo(0,0);return}
+  if(a==="trainer-new"){S.form={kind:"trainer",isNew:true,role:"trainer"};S.formErr="";S.result=null;draw();window.scrollTo(0,0);return}
   if(a==="trainer-edit"){const u=(S.usersCache||[]).find(x=>x.uid===uid);S.form=Object.assign({kind:"trainer",isNew:false},u);S.formErr="";S.result=null;draw();window.scrollTo(0,0);return}
   if(a==="form-close"){S.form=null;S.formErr="";draw();return}
   if(a==="copy"){const t=b.dataset.text;try{await navigator.clipboard.writeText(t);toast("الرابط اتنسخ")}catch(e){toast("ما قدرتش أنسخ — الرابط في إيميل الدعوة")}return}
   if(a==="result-close"){S.result=null;draw();return}
   if(a==="state")return act(b,"users.state",{uid,state:b.dataset.state},async j=>{toast(b.dataset.state==="موقوف"?"الحساب اتوقف":"الحساب اتفعّل");await draw(true)});
   if(a==="reset"){if(!arm(b,"اضغط تاني للتأكيد"))return;return act(b,"users.resetPin",{uid},async()=>{toast("الـ PIN اتصفّر. هيختار واحد جديد بكود الإيميل.");await draw(true)})}
-  if(a==="del-trainer"){if(!arm(b,"تأكيد حذف "+esc(b.dataset.name)+"؟"))return;return act(b,"users.delete",{uid},async()=>{toast("المدرب اتحذف");await draw(true)})}
+  if(a==="del-trainer"){if(!arm(b,"تأكيد حذف "+esc(b.dataset.name)+"؟"))return;return act(b,"users.delete",{uid},async()=>{toast("اتحذف");await draw(true)})}
+  if(a==="status"){if(b.getAttribute("aria-pressed")==="true")return;return act(b,"trainee.status",{key:b.dataset.key,status:b.dataset.status},async j=>{S.cache["th-"+b.dataset.key]=j;toast("الحالة اتغيّرت: "+b.dataset.status);await draw()})}
+  if(a==="doc-del"){if(!arm(b,"تأكيد الحذف؟"))return;return act(b,"docs.delete",{id:b.dataset.id},async()=>{toast("الملف اتحذف");await draw(true)})}
+  if(a==="viewer-close"){closeViewer();return}
+  if(a==="print"){window.print();return}
+  if(a==="csv"){downloadCsv();return}
+  if(a==="rfilter"){S.rfilter=b.dataset.v;draw();return}
   if(a==="del-trainee"){if(!arm(b,"تأكيد حذف "+esc(b.dataset.name)+"؟"))return;return act(b,"trainee.delete",{key:b.dataset.key},async j=>{toast("اتحذف: "+j.deleted);S.sub=null;S.tab="people";renderApp()})}
 }
 document.addEventListener("submit",e=>{const id=e.target.id;if(id!=="f-invite"&&id!=="f-trainer")return;e.preventDefault();if(S.busy)return;
   const val=k=>{const el=document.getElementById(k);return el?el.value.trim():""};
   if(id==="f-invite"){const body={name:val("i-name"),phone:val("i-phone"),email:val("i-email")};S.form=Object.assign({kind:"invite"},body);
     formStep("trainee.invite",body,j=>({title:"✅ الدعوة جاهزة لـ "+esc(body.name),text:(j.mailed?"اتبعتت على الإيميل. ":"")+"ابعتها كمان على الواتساب من الزرار، أو انسخ رابط التسجيل.",wa:j.wa,copy:j.link}))}
-  if(id==="f-trainer"){const F=S.form,n=document.getElementById("t-notify");const body={isNew:F.isNew,uid:F.isNew?val("t-uid"):F.uid,name:val("t-name"),phone:val("t-phone"),email:val("t-email"),notify:n?n.checked:false};Object.assign(S.form,body);
-    formStep("users.save",body,j=>F.isNew?{title:"✅ اتسجّل المدرب "+esc(j.user.name)+" — رقم المستخدم "+esc(j.user.uid),text:(j.mailed?"اتبعتله إيميل ترحيب فيه الكود وطريقة الدخول. ":"")+(j.wa?"ابعتله كمان على الواتساب من الزرار.":""),wa:j.wa}:{title:"✅ بيانات "+esc(j.user.name)+" اتحفظت",text:""})}
+  if(id==="f-trainer"){const F=S.form,n=document.getElementById("t-notify");const rr=document.querySelector('input[name="t-role"]:checked');const body={isNew:F.isNew,role:rr?rr.value:"trainer",uid:F.isNew?val("t-uid"):F.uid,name:val("t-name"),phone:val("t-phone"),email:val("t-email"),notify:n?n.checked:false};Object.assign(S.form,body);
+    formStep("users.save",body,j=>F.isNew?{title:"✅ اتسجّل "+esc(j.user.roleName)+": "+esc(j.user.name)+" — رقم المستخدم "+esc(j.user.uid),text:(j.mailed?"اتبعتله إيميل ترحيب فيه الكود وطريقة الدخول. ":"")+(j.wa?"ابعتله كمان على الواتساب من الزرار.":""),wa:j.wa}:{title:"✅ بيانات "+esc(j.user.name)+" اتحفظت",text:""})}
 });
 async function formStep(action,body,res){S.busy=true;S.formErr="";draw();
   try{const j=await api(action,body);S.cache={};S.form=null;S.result=res(j)}catch(e){S.formErr=e.message}S.busy=false;await draw(true);window.scrollTo(0,0)}
+
+/* ===== المستندات: الإقرار والترخيص ===== */
+const DOCT={ack:{t:"إقرار التعهد <bdi>(F HR-08)</bdi>",ic:"sign"},license:{t:"ترخيص مزاولة المهنة",ic:"lic"}};
+function docsBlock(docs,key,ack,canUp,canDel){const k=key?` data-key="${esc(key)}"`:"";
+  const card=type=>{const list=docs.filter(x=>x.type===type),D=DOCT[type];
+    const st=type==="ack"?`<span class="chip ${ack==="لم يُستلم"?"wait":"ok"}">${esc(ack||"—")}</span>`:`<span class="chip ${list.length?"ok":"wait"}">${list.length?"مرفوع":"لسه ما اترفعش"}</span>`;
+    return `<div class="doc"><div class="doc-h"><span class="ic">${ic(D.ic)}</span><div><b>${D.t}</b>${st}</div>
+      ${canUp?`<label class="btn ${list.length?"ghost":"gold"} sm upbtn">${ic("up")}<span>${list.length?"رفع نسخة جديدة":"رفع"}</span><input type="file" accept="image/*,application/pdf" data-upload="${type}"${k} hidden></label>`:""}</div>
+      ${list.length?`<div class="dlist">${list.map(x=>`<div class="drow"><button class="t linkish" data-doc="${esc(x.id)}"><bdi>${esc(/\.pdf$/i.test(x.name)?"PDF":"صورة")} · ${esc(x.at)}</bdi><span class="note">رفعه: ${esc(x.by)} · <bdi class="ltr">${x.mb} MB</bdi></span></button>
+        <button class="dl" data-doc="${esc(x.id)}" aria-label="فتح">${ic("eye")}</button>${canDel?`<button class="dl del" data-act="doc-del" data-id="${esc(x.id)}" aria-label="حذف">${ic("trash")}</button>`:""}</div>`).join("")}</div>`:""}</div>`};
+  return `<section class="card sect docs"><div class="sect-h"><h3>${key?"المستندات":"مستنداتي"}</h3></div>
+    ${canUp&&!key?`<p class="note">صوّر المستند بوضوح أو ارفعه PDF (لحد 10 MB). بيتحفظ في ملفك، ومدير المنصة بيوصله نسخة.</p>`:""}${card("ack")}${card("license")}</section>`}
+async function fileToPayload(f){
+  if(f.size>10*1048576&&!/^image\//.test(f.type))throw new Error("الملف أكبر من 10 MB.");
+  if(/^image\/(jpeg|png|webp)$/.test(f.type)){try{const img=await new Promise((res,rej)=>{const i=new Image();i.onload=()=>res(i);i.onerror=rej;i.src=URL.createObjectURL(f)});
+      const sc=Math.min(1,2200/Math.max(img.naturalWidth,img.naturalHeight)),c=document.createElement("canvas");c.width=Math.round(img.naturalWidth*sc);c.height=Math.round(img.naturalHeight*sc);
+      const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(img.src);
+      const u=c.toDataURL("image/jpeg",.85);return {mime:"image/jpeg",name:f.name,data:u.slice(u.indexOf(",")+1)}}catch(e){}}
+  if(f.size>10*1048576)throw new Error("الملف أكبر من 10 MB.");
+  const mime=f.type||(/\.pdf$/i.test(f.name)?"application/pdf":/\.hei[cf]$/i.test(f.name)?"image/heic":"");
+  const data=await new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(String(r.result).split(",")[1]||"");r.onerror=()=>rej(new Error("ما قدرتش أقرا الملف."));r.readAsDataURL(f)});
+  return {mime,name:f.name,data}}
+document.addEventListener("change",async e=>{const inp=e.target.closest("input[data-upload]");if(!inp||!inp.files||!inp.files[0])return;
+  const lab=inp.closest("label"),f=inp.files[0];lab.classList.add("busy");const sp=lab.querySelector("span");const old=sp.textContent;sp.textContent="بيرفع…";
+  try{const p=await fileToPayload(f);const j=await api("docs.upload",Object.assign({type:inp.dataset.upload,key:inp.dataset.key||""},p));
+    S.cache={};toast("✅ اتحفظ في ملفك"+(j.ack?" — الإقرار: "+j.ack:""));await draw(true)}
+  catch(err){toast(err.message);sp.textContent=old}finally{lab.classList.remove("busy");inp.value=""}});
+let viewerUrl=null;
+function closeViewer(){const v=$("#viewer");if(v)v.remove();if(viewerUrl){URL.revokeObjectURL(viewerUrl);viewerUrl=null}}
+async function openDoc(id,btn){if(btn.dataset.busy)return;btn.dataset.busy=1;toast("بفتح الملف…");
+  try{const j=await api("docs.get",{id});const bin=atob(j.data),u8=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)u8[i]=bin.charCodeAt(i);
+    closeViewer();viewerUrl=URL.createObjectURL(new Blob([u8],{type:j.mime}));const img=/^image\/(jpeg|png|webp|gif)/.test(j.mime);
+    document.body.insertAdjacentHTML("beforeend",`<div id="viewer" class="viewer" role="dialog" aria-modal="true" aria-label="${esc(j.name)}"><div class="vbar"><b><bdi>${esc(j.name)}</bdi></b>
+      <a class="btn ghost sm" href="${viewerUrl}" download="${esc(j.name)}">${ic("dl")}تحميل</a>${img?"":`<a class="btn ghost sm" href="${viewerUrl}" target="_blank" rel="noopener">${ic("ext")}فتح</a>`}<button class="btn gold sm" data-act="viewer-close">إغلاق</button></div>
+      <div class="vbody">${img?`<img src="${viewerUrl}" alt="${esc(j.name)}">`:`<iframe src="${viewerUrl}" title="${esc(j.name)}"></iframe>`}</div></div>`);
+    $("#toast").classList.remove("show")}
+  catch(e){toast(e.message)}finally{delete btn.dataset.busy}}
+
+/* ===== التقارير ===== */
+function onTrack(t){return t.expected==null||t.pct>=t.expected-10}
+function trackChart(list,planDays){const act=list.filter(t=>t.status==="Active Trainee"&&t.dayN!=null);if(!act.length)return "";
+  const maxD=Math.max(planDays+4,...act.map(t=>t.dayN+2)),W=640,H=300,pl=40,pr=16,pt=16,pb=36,X=d=>pl+d*(W-pl-pr)/maxD,Y=p=>pt+(100-p)*(H-pt-pb)/100;
+  const ticks=[];for(let d=0;d<=maxD;d+=maxD>40?10:5)ticks.push(d);
+  return `<div class="card sect"><div class="sect-h"><h3>على المسار ولا متأخر؟</h3><span class="note">Active بس · اضغط على أي نقطة</span></div>
+  <div class="chartwrap"><svg class="track-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="تقدم كل متدرب مقارنة بيومه في الخطة">
+  ${[0,25,50,75,100].map(v=>`<line class="gd" x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}"/><text class="ax" x="${pl-6}" y="${Y(v)+4}" text-anchor="end">${v}%</text>`).join("")}
+  ${ticks.map(d=>`<text class="ax" x="${X(d)}" y="${H-pb+16}" text-anchor="middle">${d}</text>`).join("")}<text class="ax" x="${(W+pl)/2}" y="${H-4}" text-anchor="middle">يوم التدريب (أيام عمل)</text>
+  <polygon class="band" points="${X(0)},${Y(0)} ${X(planDays)},${Y(100)} ${X(maxD)},${Y(100)} ${X(maxD)},${Y(0)}"/>
+  <polyline class="expl" points="${X(0)},${Y(0)} ${X(planDays)},${Y(100)} ${X(maxD)},${Y(100)}"/>
+  <line class="pend" x1="${X(planDays)}" x2="${X(planDays)}" y1="${pt}" y2="${H-pb}"/><text class="ax" x="${X(planDays)-6}" y="${pt+10}">نهاية الخطة (${planDays})</text>
+  ${act.map(t=>`<g class="pt ${onTrack(t)?"ok":"late"}" data-trainee="${esc(t.key)}" tabindex="0"><title>${esc(t.name)}: ${t.pct}% في اليوم ${t.dayN} (المفروض ${t.expected}%)</title><circle cx="${X(t.dayN)}" cy="${Y(t.pct)}" r="7"/><text x="${X(t.dayN)}" y="${Y(t.pct)-11}" text-anchor="middle">${esc(bareFirst(t.name))}</text></g>`).join("")}
+  </svg></div><div class="legend2"><span><i class="dot ok"></i>على المسار</span><span><i class="dot late"></i>متأخر أكتر من 10%</span><span><i class="ln"></i>المفروض حسب الخطة</span></div></div>`}
+function bareFirst(n){return String(n||"").replace(/^(د\.|Dr\.?)\s*/i,"").trim().split(/\s+/)[0]}
+function rlist(d){const f=S.rfilter||"Active Trainee";return d.trainees.filter(t=>f==="all"||t.status===f).sort((a,b)=>a.name<b.name?-1:1)}
+const STN={"Active Trainee":"Active","Fixed Pharmacist":"Fixed","Resigned":"Resigned"};
+function reportsView(d){S.report=d;const f=S.rfilter||"Active Trainee",list=rlist(d),k=d.kpi,n=s=>d.trainees.filter(t=>s==="all"||t.status===s).length;
+  const lic=list.filter(t=>t.docs&&t.docs.license).length,ackOk=list.filter(t=>t.ack!=="لم يُستلم").length,q=list.filter(t=>t.quizAvg!=null);
+  return `<div class="sect report-head"><div class="sect-h"><h2>تقرير المتدربين</h2><div class="actions noprint"><button class="btn ghost sm" data-act="print">${ic("dl")}طباعة / PDF</button><button class="btn ghost sm" data-act="csv">${ic("sheet")}Excel</button></div></div>
+  <p class="lede">تدريب صيادلة جدة 3 · آخر تحديث <bdi class="ltr">${esc(d.updated||"")}</bdi> · ${esc(S.user.name)} (${esc(S.user.roleName)})</p></div>
+  <div class="fchips noprint">${[["Active Trainee","Active"],["Fixed Pharmacist","Fixed"],["Resigned","Resigned"],["all","الكل"]].map(([v,l])=>`<button class="fchip" data-act="rfilter" data-v="${v}" aria-pressed="${f===v}">${l} <span class="num">${n(v)}</span></button>`).join("")}</div>
+  <div class="kpis"><div class="kpi"><b class="num">${list.length}</b><span>${f==="all"?"كل المتدربين":STN[f]}</span></div>
+    <div class="kpi"><b class="num">${list.length?Math.round(list.reduce((a,t)=>a+t.pct,0)/list.length):0}%</b><span>متوسط التقدم</span></div>
+    <div class="kpi"><b class="num">${q.length?Math.round(q.reduce((a,t)=>a+t.quizAvg,0)/q.length)+"%":"—"}</b><span>متوسط الاختبارات</span></div>
+    <div class="kpi ${ackOk<list.length||lic<list.length?"warn":""}"><b class="num">${ackOk}/${list.length} · ${lic}/${list.length}</b><span>الإقرارات · التراخيص</span></div></div>
+  ${f==="Active Trainee"||f==="all"?trackChart(d.trainees,d.planDays||24):""}
+  <div class="card sect"><div class="tablewrap"><table class="rtable"><thead><tr><th>#</th><th>الاسم</th><th>الرقم الوظيفي</th><th>الجوال</th><th>الحالة</th><th>البداية</th><th>اليوم</th><th>التقدم</th><th>المفروض</th><th>الاختبارات</th><th>الإقرار</th><th>الترخيص</th></tr></thead>
+  <tbody>${list.map((t,i)=>`<tr data-trainee="${esc(t.key)}"><td class="num">${i+1}</td><td><b>${esc(t.name)}</b></td><td class="num">${esc(t.emp||"—")}</td><td class="num"><bdi class="ltr">${esc(t.phone||"")}</bdi></td><td>${STN[t.status]||""}</td><td class="num">${esc(t.start||"")}</td>
+    <td class="num">${t.dayN??"—"}</td><td class="num"><span class="cell-bar"><i style="width:${t.pct}%" class="${t.status==="Active Trainee"&&!onTrack(t)?"late":""}"></i></span>${t.pct}%</td><td class="num">${t.status==="Active Trainee"&&t.expected!=null?t.expected+"%":"—"}</td>
+    <td class="num">${t.quizAvg!=null?t.quizAvg+"% ("+t.quizN+")":"—"}</td><td class="${t.ack==="لم يُستلم"?"bad":"okc"}">${esc(t.ack)}</td><td class="${t.docs&&t.docs.license?"okc":"bad"}">${t.docs&&t.docs.license?"مرفوع":"لسه"}</td></tr>`).join("")||`<tr><td colspan="12">مفيش متدربين</td></tr>`}</tbody></table></div></div>
+  <p class="note noprint">اضغط على أي صف يفتح ملف المتدرب. «المفروض» = نسبة يومه من خطة الـ ${d.planDays||24} يوم عمل.</p>`}
+function downloadCsv(){const d=S.report;if(!d)return;const list=rlist(d);
+  const rows=[["الاسم","الرقم الوظيفي","الجوال","الإيميل","الحالة","البداية","الانتهاء","يوم التدريب","التقدم %","البنود","المفروض %","متوسط الاختبارات %","عدد الاختبارات","الإقرار","ملفات الإقرار","ملفات الترخيص"]].concat(
+    list.map(t=>[t.name,t.emp,t.phone,t.email,t.status,t.start,t.end,t.dayN??"",t.pct,t.n,t.expected??"",t.quizAvg??"",t.quizN,t.ack,t.docs?t.docs.ack:0,t.docs?t.docs.license:0]));
+  const csv="\ufeff"+rows.map(r=>r.map(v=>{v=String(v??"");return /[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(",")).join("\r\n");
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="Jeddah3-trainees-"+(d.updated||"").slice(0,10)+".csv";document.body.appendChild(a);a.click();setTimeout(()=>{a.remove();URL.revokeObjectURL(a.href)},2000);toast("اتنزّل ملف Excel")}
 
 /* تحميل ملف من الـ API */
 async function getFile(id,btn){if(btn.dataset.busy)return;btn.dataset.busy=1;toast("بحمّل الملف…");
@@ -707,7 +839,7 @@ async function getFile(id,btn){if(btn.dataset.busy)return;btn.dataset.busy=1;toa
 
 /* ===== أحداث ===== */
 document.addEventListener("click",e=>{if(!S.user)return;
-  const tab=e.target.closest("[data-tab]");if(tab){S.tab=tab.dataset.tab;S.sub=null;S.form=null;S.result=null;renderApp();window.scrollTo(0,0);return}
+  const tab=e.target.closest("[data-tab]");if(tab){closeViewer();S.tab=tab.dataset.tab;S.sub=null;S.form=null;S.result=null;renderApp();window.scrollTo(0,0);return}
   const go=e.target.closest("[data-go]");if(go){S.tab=go.dataset.go;S.sub=null;S.form=null;S.result=null;renderApp();window.scrollTo(0,0);return}
   if(e.target.closest("#logout")){logout();return}
   if(e.target.closest("[data-retry]")){draw(true);return}
@@ -715,6 +847,8 @@ document.addEventListener("click",e=>{if(!S.user)return;
   const qz=e.target.closest("[data-quiz]");if(qz){S.sub={kind:"quiz",formId:qz.dataset.quiz,key:qz.dataset.key||"",parent:S.sub};draw();window.scrollTo(0,0);return}
   const tr=e.target.closest("[data-trainee]");if(tr){S.sub={kind:"trainee",key:tr.dataset.trainee};draw();window.scrollTo(0,0);return}
   const ab=e.target.closest("[data-act]");if(ab){onAct(ab);return}
+  const db=e.target.closest("[data-doc]");if(db){openDoc(db.dataset.doc,db);return}
+  if(e.target.id==="viewer"){closeViewer();return}
   const fb=e.target.closest("[data-file]");if(fb){getFile(fb.dataset.file,fb);return}
   const fc=e.target.closest("[data-filter]");if(fc){S.filter=fc.dataset.filter;draw();return}
   const c=e.target.closest(".cat[data-cat]");if(c){const i=+c.dataset.cat;S.cat=S.cat===i?-1:i;document.querySelectorAll(".cat").forEach(x=>x.setAttribute("aria-pressed",+x.dataset.cat===S.cat));$("#mat-list").innerHTML=matList();return}
